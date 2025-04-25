@@ -1,0 +1,107 @@
+\documentclass[12pt]{report}
+
+\input{packages}
+
+% Document margins
+\setpapersize{A4}
+\setmargins{2.2cm}          % margen izquierdo
+{0cm}                       % margen superior
+{16.5cm}                    % anchura del texto
+{24.57cm}                   % altura del texto
+{55pt}                      % altura cabeceras
+{1.25cm}                    % espacio entre el texto y los cabeceras
+{1pt}                       % altura del pie de página
+{1cm}                       % Espacio entre el texto y el pie de página
+
+% Line spacing
+\renewcommand{\baselinestretch}{1.5} 
+
+% Remove paragraph indentation
+\setlength{\parindent}{0pt}
+
+% Paragraph spacing
+\setlength{\parskip}{1em}
+
+% Definir colores personalizados
+\definecolor{linkcolor}{RGB}{52, 152, 219}   % Azul claro
+\definecolor{citecolor}{RGB}{231, 76, 60}    % Rojo suave
+\definecolor{urlcolor}{RGB}{46, 204, 113}    % Verde esmeralda
+\definecolor{filecolor}{RGB}{155, 89, 182}   % Morado
+\definecolor{menucolor}{RGB}{241, 196, 15}   % Amarillo dorado
+
+% Configuración de Hyperref con colores bonitos
+\hypersetup{
+    colorlinks=true,
+    linkcolor=linkcolor,
+    citecolor=citecolor,
+    urlcolor=linkcolor,
+    filecolor=filecolor,
+    menucolor=menucolor,
+    bookmarksopen=true,
+    bookmarksnumbered=true,
+    pdfstartview=FitH,
+    pdfpagemode=UseOutlines
+}
+
+% Header  configuration
+\pagestyle{fancy}
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \rhead{{Desarrollo de una aplicación web para la gestión \\ centralizada de múltiples marketplaces}}
+    \lhead{\includegraphics[width=5cm]{figures/generic/logo_eseiaat.png}}
+    \cfoot{\thepage}
+}
+\fancyhf{}
+\rhead{{Desarrollo de una aplicación web para la gestión \\ centralizada de múltiples marketplaces}}
+\lhead{\includegraphics[width=5cm]{figures/generic/logo_eseiaat.png}}
+\cfoot{\thepage}
+
+% Create acronym list
+\makenoidxglossaries
+\newacronym{saas}{SaaS}{Software as a Service}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{crm}{CRM}{Customer Relationship Management}
+
+\begin{document}
+
+% Rename of variables
+\renewcommand{\listfigurename}{Índice de figuras}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\contentsname}{Sumario}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\chaptername}{Capitulo}
+\renewcommand{\bibname}{Referencias}
+\renewcommand*{\acronymname}{Acrónimos}
+
+
+\pagenumbering{gobble}
+\input{title.tex}
+
+\newpage
+\thispagestyle{empty}
+\phantom{abc}
+\newpage
+
+\pagenumbering{Roman}
+
+\tableofcontents
+\listoffigures
+\glsaddall
+\renewcommand{\thepage}{\Roman{page}}
+\printnoidxglossaries
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage}{\arabic{page}}
+
+\input{sections/intoduction/introduccion.tex}
+\input{sections/theoric_frame/marco_teorico.tex}
+\input{sections/analysis/analisis_comercial_competencia.tex}
+\input{sections/design_develop/diseno_desarrollo.tex}
+\input{sections/conclusions/conclusiones.tex}
+
+\newpage
+\printbibliography
+
+\end{document}
