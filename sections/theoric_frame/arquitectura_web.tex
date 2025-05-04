@@ -3,17 +3,15 @@
 
 En el mundo del software existen dos tipos de aplicaciones: las aplicaciones de escritorio y las aplicaciones web. Las aplicaciones de escritorio son aquellas que se instalan en un ordenador y se ejecutan de forma local, mientras que las aplicaciones web son aquellas que se ejecutan en un servidor y se acceden a través de un navegador web.
 
-Desde los inicios del desarrollo de software, las aplicaciones de escritorio han sido la norma. Sin embargo, en los últimos años ha habido un cambio significativo hacia el desarrollo de aplicaciones web, pues el avance de las distintas tecnologías web y la conectividad a internet han mitigado considerablemente las desventajas que anteriormente presentaban. \cite{evo_web}
+Desde los inicios del desarrollo de software, las aplicaciones de escritorio han sido la norma. Sin embargo, en los últimos años ha habido un cambio significativo hacia el desarrollo de aplicaciones web, pues el avance de las distintas tecnologías web y la conectividad a internet han mitigado considerablemente las desventajas que anteriormente presentaban \cite{evo_web}.
 
-Las aplicaciones de escritorio no requieren de un servidor externo para funcionar, toda la lógica se encuentra en el ordenador del usuario y es este mismo quien lo ejecuta. Esto hace que la aplicación sea más rápida y eficiente, ya que no hay necesidad de enviar datos a través de internet. No obstante, esto también significa que el usuario debe instalar la aplicación en su ordenador y mantenerla actualizada, lo que puede ser un inconveniente. \cite{web_vs_desktop}
+Las aplicaciones de escritorio no requieren de un servidor externo para funcionar, toda la lógica se encuentra en el ordenador del usuario y es este mismo quien lo ejecuta. Esto hace que la aplicación sea más rápida y eficiente, ya que no hay necesidad de enviar datos a través de internet. No obstante, esto también significa que el usuario debe instalar la aplicación en su ordenador y mantenerla actualizada, lo que puede ser un inconveniente \cite{web_vs_desktop}.
 
-Por otro lado, las aplicaciones web sí que requieren de un servidor externo para funcionar. Esto significa que el usuario no necesita instalar nada en su ordenador, ya que la aplicación se ejecuta en el servidor y se accede a través de un navegador web. Este paradigma de desarrollo permite que la aplicación sea más accesible, pues se puede acceder a la aplicación desde cualquier dispositivo y lugar con conexión a internet. Además, como todo se encuentra en el servidor y no en el usuario, las actualizaciones son mucho más inmediatas. Sin embargo, esto también significa que la aplicación puede ser más lenta y menos eficiente debido a que la lógica y los datos no se encuentran en el ordenador del usuario, sino en el servidor. \cite{web_vs_desktop}
+Por otro lado, las aplicaciones web sí que requieren de un servidor externo para funcionar. Esto significa que el usuario no necesita instalar nada en su ordenador, ya que la aplicación se ejecuta en el servidor y se accede a través de un navegador web. Este paradigma de desarrollo permite que la aplicación sea más accesible, pues se puede acceder a la aplicación desde cualquier dispositivo y lugar con conexión a internet. Además, como todo se encuentra en el servidor y no en el usuario, las actualizaciones son mucho más inmediatas. Sin embargo, esto también significa que la aplicación puede ser más lenta y menos eficiente debido a que la lógica y los datos no se encuentran en el ordenador del usuario, sino en el servidor \cite{web_vs_desktop}.
 
 La mejor conectividad a internet y el avance de las tecnologías web han permitido que las aplicaciones web sean cada vez más rápidas y eficientes. Esto ha llevado a un aumento en la popularidad de las aplicaciones web, y muchas empresas están optando por desarrollar aplicaciones web en lugar de aplicaciones de escritorio.
 
-\subsection{Arquitectura y tecnologías}
-
-La arquitectura de una aplicación web se refiere a la forma en que se organiza y estructura el software. Esto incluye la forma en que se comunican los diferentes componentes de la aplicación, así como la forma en que se almacenan y gestionan los datos. Todas las aplicaciones web están compuestas por tres componentes principales: el cliente, la lógica de negocio y la base de datos.
+Con todo esto, se ha formado lo que se conoce como arquitectura web, que hace referencia a la forma en que se organiza y estructura el software. Esto incluye la forma en que se comunican los diferentes componentes de la aplicación, así como la forma en que se almacenan y gestionan los datos. Todas las aplicaciones web están compuestas por tres componentes principales: el cliente, la lógica de negocio y la base de datos.
 
 Estos tres componentes se dividen en dos bloques: el \textit{frontend} y el \textit{backend}. El \textit{frontend} es la parte de la aplicación que interactúa con el usuario, es decir, el cliente, mientras que el \textit{backend} es la parte de la aplicación que se encarga de gestionar los datos y la lógica de negocio. Ambos bloques se comunican entre sí a través de una API (Interfaz de Programación de Aplicaciones), que es un conjunto de reglas y protocolos que permiten que diferentes componentes de software se comuniquen entre sí. Todo esto se puede ver en la figura \ref{fig:arquitectura_web}.
 
@@ -24,7 +22,7 @@ Estos tres componentes se dividen en dos bloques: el \textit{frontend} y el \tex
     \label{fig:arquitectura_web}
 \end{figure}
 
-\subsubsection{\textit{Frontend}}
+\subsection{\textit{Frontend}}
 
 El \textit{frontend} es la parte de la aplicación que interactúa con el usuario. Esto incluye la interfaz de usuario, que es la parte de la aplicación que el usuario ve y con la que interactúa, así como la lógica de presentación, que es la parte de la aplicación que se encarga de mostrar los datos al usuario. El \textit{frontend} se desarrolla principalmente utilizando HTML, CSS y JavaScript, tecnologías que se ejecutan de manera nativa en los navegadores.
 
@@ -32,11 +30,52 @@ El HTML (\textit{Hypertext Markup Language}) es el lenguaje de marcado utilizado
 
 Con todo esto, el servidor envía todo este contenido al usuario de manera que su navegador lo pueda representar, en caso del HTML y el CSS, y ejecutar, en caso del JavaScript.
 
-\textcolor{red}{AFEGIR EXPLICACIÓ REACT}
+Desarrollar aplicaciones de manera nativa, es decir, utilizando HTML, CSS y JavaScript sin el apoyo de ninguna librería o herramienta adicional, puede ser complicado, tedioso y poco eficiente. Para facilitar esta tarea, existen distintos \textit{frameworks} que proporcionan un conjunto de herramientas y funcionalidades pensadas para abstraer la complejidad del desarrollo. De esta manera, los \textit{frameworks} cumplen principalmente dos propósitos:
 
-\subsubsection{\textit{Backend}}
+\begin{itemize}
+    \item \textbf{Ahorrar tiempo:} Los \textit{frameworks} permiten al desarrollador ahorrar tiempo ofreciendo funcionalidades predefinidas a problemas comunes o recurrentes. En el caso de una aplicación web, esto puede incluir la gestión de rutas, la gestión del estado de la aplicación, la gestión de formularios, entre otros \cite{framworks}.
+    \item \textbf{Garantizar buenas prácticas de desarrollo:} Los \textit{frameworks} suelen seguir patrones de diseño y buenas prácticas de desarrollo que ayudan a los desarrolladores a escribir código limpio, mantenible y escalable. Adicionalmente ofrecen características de seguridad por defecto, de manera que el desarrollador no tiene que implementar sus propias medidas de seguridad que pueden resultar ser vulnerables. Un ejemplo es la autenticación de usuarios, donde el \textit{framework} se encarga de gestionar la creación y validación de los \textit{tokens} de acceso, así como la gestión de sesiones \cite{framworks}.
+\end{itemize}
 
-\subsubsection{API}
+Algunos de los \textit{frameworks} más populares para el desarrollo de \textit{frontend} son React, Angular y Vue.js. En el caso de este proyecto, se ha optado por utilizar React, un \textit{framework} desarrollado por Facebook que en los últimos años se ha convertido en un estándar de la industria. React es un \textit{framework} basado en componentes, lo que significa que la interfaz de usuario se divide en unidades independientes y reutilizables, facilitando así la creación de aplicaciones más complejas y escalables.
+
+React se desarrolla utilizando JavaScript, un lenguaje de programación de tipado dinámico, lo que significa que no requiere de declarar el tipo de las variables al momento de crearlas. Esta característica, si bien ofrece flexibilidad, puede provocar errores difíciles de detectar. Para solventarlo, existe TypeScript, un lenguaje que extiende JavaScript añadiendo tipado estático \cite{typescript}. Con TypeScript, el desarrollador puede especificar el tipo de las variables, permitiendo que los errores de tipado se detecten en tiempo de interpretación. Aunque los navegadores solo interpretan JavaScript, el código en TypeScript se transpila automáticamente a JavaScript. Por este motivo, en este proyecto se ha decidido utilizar TypeScript para mejorar la calidad y la robustez del código \cite{tipado}.
+
+Finalmente, otro motivo relevante para la elección de React es su gran comunidad de desarrolladores, así como la amplia disponibilidad de librerías y herramientas que extienden sus funcionalidades básicas. La elección de React y el detalle de su funcionamiento se explican en profundidad en la sección \textcolor{red}{(Añadir sección parte desarrollo frontend)}.
+
+\subsection{\textit{Backend}}
+
+El \textit{backend} es la parte de la aplicación que administra la funcionalidad general de la aplicación. Cuando el usuario interactúa con el \textit{frontend}, la interacción envía una solicitud al \textit{backend} para que la procese y devuelva una respuesta \cite{aws_frontend_backend}. De este modo, el \textit{backend} se encarga de gestionar la lógica de negocio, es decir, es la parte de la aplicación que se encarga de procesar los datos y realizar las operaciones necesarias para realizar las distintas funcionalidades de ésta. Adicionalmente contiene la base de datos, que es donde se almacenan todos los datos de la aplicación.
+
+A diferencia del \textit{frontend}, el \textit{backend} no se ejecuta en el navegador del usuario, sino en un servidor. Esto significa que el \textit{backend} puede utilizar lenguajes de programación y tecnologías que no son compatibles con los navegadores, como Java, Python o Ruby. No obstante, un factor que si tiene en común con el \textit{frontend} es la existencia de \textit{frameworks}.
+
+Para el desarrollo de este proyecto se ha decidido utilizar Django, un \textit{framework} escrito en Python. Django es un \textit{framework} un tanto especial, ya que permite desarrollar tanto el \textit{frontend} como el \textit{backend} de una aplicación web. Sin embargo, en este proyecto se ha optado por utilizar Django únicamente para el desarrollo del \textit{backend}, dejando el \textit{frontend} a cargo de React, pues se considera que es la mejor opción para el desarrollo de aplicaciones web modernas. En cuanto al aspecto más técnico, Django está basado en el modelo MVC (Modelo-Vista-Controlador), un patrón de diseño que separa la lógica en tres componentes principales: el modelo, que se encarga de gestionar los datos; la vista, que se encarga de mostrar los datos al usuario; y el controlador, que se encarga de gestionar la interacción entre el modelo y la vista \cite{mvc}.
+
+El funcionamiento del modelo MVC se representa en la figura \ref{fig:mvc}. Para entender mejor este flujo, se puede tomar como ejemplo una acción concreta dentro del proyecto: acceder a la sección de productos de la aplicación. A continuación, se explica paso a paso lo que ocurre en ese proceso:
+
+\begin{enumerate}
+    \item \textbf{Solicitud del usuario} El usuario accede a la sección de productos desde el \textit{frontend}, ya sea a través de un menú o directamente introduciendo una URL. Esta acción genera una solicitud HTTP que se envía a un \textit{endpoint} del \textit{backend} (paso 1 en la figura).
+    \item \textbf{Recepción por parte del controlador:} El \textit{endpoint} está vinculado a una función del controlador, que es el encargado de procesar la solicitud. En este caso, el controlador interpreta que se necesita acceder a los datos de los productos y actúa en consecuencia (paso 2).
+    \item \textbf{Consulta al modelo:} El controlador solicita la información al modelo correspondiente, es decir, a los productos. El modelo representa la estructura de datos y contiene la lógica necesaria para interactuar con la base de datos de manera más sencilla y segura (paso 3).
+    \item \textbf{Respuesta del modelo:} El modelo realiza la consulta a la base de datos y devuelve al controlador los datos solicitados, en este caso, la lista de productos (paso 4).
+    \item \textbf{Selección de la vista:} Con los datos recibidos, el controlador selecciona la vista adecuada para estructurar la respuesta. Esta vista se encarga de preparar los datos en un formato que el \textit{frontend} pueda interpretar, normalmente JSON (\textit{JavaScript Object Notation}) (paso 5).
+    \item \textbf{Respuesta al usuario:} La vista estructurada en formato JSON se devuelve al controlador, que finalmente la envía como respuesta al usuario. El \textit{frontend} recibe estos datos y se encarga de representarlos en la interfaz gráfica, mostrando al usuario la información solicitada: los productos (paso 6).
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/mvc.pdf}
+    \caption{Diagrama de flujo del patrón de diseño MVC.}
+    \label{fig:mvc}
+\end{figure}
+
+Una mayor profundidad sobre el funcionamiento de los modelos y la base de datos se puede encontrar en la sección \ref{sec:base_datos} y sobre la comunicación entre el \textit{frontend} y el \textit{backend} en la sección \ref{sec:api}.
+
+\subsection{Base de datos}
+\label{sec:base_datos}
+
+\subsection{API}
+\label{sec:api}
 
 \begin{figure}
     \centering
@@ -45,4 +84,3 @@ Con todo esto, el servidor envía todo este contenido al usuario de manera que s
     \label{fig:use_case}
 \end{figure}
 
-\subsection{Tecnologías web}
