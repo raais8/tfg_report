@@ -74,13 +74,71 @@ Una mayor profundidad sobre el funcionamiento de los modelos y la base de datos 
 \subsection{Base de datos}
 \label{sec:base_datos}
 
-\subsection{API}
-\label{sec:api}
+La base de datos es una colección de datos electrónicamente almacenados y organizados de manera que se puedan acceder, gestionar y actualizar fácilmente. En el caso de una aplicación web, la base de datos se utiliza para almacenar toda la información necesaria para el funcionamiento de ésta \cite{aws_database}.
+
+Existen distintos tipos de bases de datos, pero las más comunes son las bases de datos relacionales y las bases de datos no relacionales. Las bases de datos relacionales almacenan los datos en tablas, donde cada fila representa un registro y cada columna representa un campo. Este tipo de base de datos es ideal para aplicaciones que requieren una estructura de datos rígida y bien definida. Por otro lado, las bases de datos no relacionales almacenan los datos en formatos más flexibles, como documentos o pares clave-valor. Este tipo de base de datos es ideal para aplicaciones que requieren una estructura de datos más flexible y escalable \cite{aws_database_rel}.
+
+En este proyecto se ha optado por utilizar una base de datos relacional, pues la mayoría de los datos que se gestionan son estructurados y requieren una relación entre ellos. Así pues, se ha decidido usar PostgreSQL, un sistema de gestión de bases de datos relacional de código abierto que funciona de manera nativa con Django.
+
+Con el tipo de base de datos definido, es fundamental comprender el funcionamiento básico de una base de datos relacional. Este tipo de base de datos organiza la información en tablas, cada una con un nombre específico. Las tablas están compuestas por un conjunto fijo de columnas, que representan los campos o atributos de los datos, y un conjunto variable de filas, donde cada una corresponde a un registro u objeto dentro de la tabla. Cada fila, es decir, cada registro, tiene un identificador único conocido como clave primaria, que permite distinguirlo de los demás registros de la tabla y relacionarlo con otras tablas a partir de claves foráneas. Las claves foráneas son columnas que establecen una relación entre dos o más tablas, permitiendo que los datos de una tabla se vinculen con los datos de otras. Esto es especialmente útil para representar relaciones entre diferentes entidades dentro de la base de datos, como por ejemplo, la relación entre un pedido, el cliente que lo ha realizado y sus productos asociados, tal como se muestra en la figura \ref{fig:rel_db}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/use_case.pdf}
-    \caption{Diagrama de flujo del proceso de autenticación de usuario como caso de uso.}
-    \label{fig:use_case}
+    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/rel_db.pdf}
+    \caption{Tablas de ejemplo de una base de datos para guardar pedidos.}
+    \label{fig:rel_db}
 \end{figure}
+
+Para crear, modificar, eliminar y consultar los datos de una base de datos relacional, se utiliza SQL (\textit{Structured Query Language}), un lenguaje de programación diseñado específicamente para gestionar bases de datos. SQL permite realizar operaciones como la creación de tablas, la inserción de datos, la actualización de registros y la consulta de información \cite{aws_sql}. No obstante, realizar consultas SQL directamente puede ser complicado y propenso a errores, especialmente en aplicaciones más complejas. Por este motivo, Django ofrece una capa de abstracción llamado sistema ORM (\textit{Object-Relational Mapping}), que permite interactuar con la base de datos utilizando objetos y clases de Python en lugar de escribir consultas SQL directamente. De esta manera, con ORM cada tabla de la base de datos es representada por lo que se llama un modelo, que es una clase de Python que define la estructura de la tabla y sus relaciones con otras tablas. Cada instancia de un modelo representa una fila en la tabla correspondiente, y los atributos de la clase representan las columnas de la tabla. Este enfoque se puede ver ejemplificado en la figura \ref{fig:orm_vs_sql}, donde se muestra una consulta SQL y su equivalente en ORM para obtener los campos \texttt{total} y \texttt{date} del registro que tiene \texttt{customer = 7} de la tabla \texttt{order}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/orm_vs_sql.pdf}
+    \caption{Ejemplo de consulta SQL y su equivalente en ORM para la obtención de dos campos de un registro de una tabla.}
+    \label{fig:orm_vs_sql}
+\end{figure}
+
+\subsection{API}
+\label{sec:api}
+
+La API (\textit{Application Programming Interface}) es un conjunto de mecanismos que permiten la comunicación entre diferentes componentes de software mediante unas definiciones y unos protocolos. En el caso de una aplicación web, la API es la interfaz que permite al \textit{frontend} comunicarse con el \textit{backend} y viceversa. Esto significa que cuando el usuario interactúa con el \textit{frontend} se envían solicitudes a la API (al \textit{backend}), que las procesa y devuelve una respuesta. No obstante, las API no solo permiten la comunicación entre el \textit{frontend} y el \textit{backend}, sino que también permiten la comunicación entre diferentes aplicaciones. Un ejemplo que aplica a este proyecto es la comunicación entre el \textit{backend} de la aplicación y un \textit{marketplace}, donde se emplea una API. Para obtener un pedido de un \textit{marketplace}, el \textit{backend} debe enviar una solicitud a la API del \textit{marketplace} y recibe una respuesta con la información del pedido \cite{aws_api}.
+
+La arquitectura de una API se entiende en términos de cliente y servidor, de manera que la aplicación que envía la solicitud se llama cliente y la aplicación que recibe y procesa la solicitud se llama servidor. En el ejemplo anterior, el \textit{backend} actua como cliente y el \textit{marketplace} actua como servidor.
+
+Sin embargo, las API pueden ser de distintos tipos, dependiendo de cómo se estructuren y cómo se comuniquen. En el caso de este proyecto, se ha optado por utilizar una API REST (\textit{Representational State Transfer}), que son las más comunes en la actualidad. Una API REST es un tipo de API que utiliza el protocolo HTTP para la comunicación entre el cliente y el servidor, lo que significa que las solicitudes y respuestas se envían a través de HTTP, utilizando principalmente los siguientes métodos para realizar operaciones sobre los recursos:
+
+\begin{itemize}
+    \item \textbf{GET:} Se utiliza para obtener información de un recurso. Por ejemplo, si se quiere obtener la lista de productos de la aplicación, se enviaría una solicitud GET a la API con la URL correspondiente.
+    \item \textbf{POST:} Se utiliza para crear un nuevo recurso. Por ejemplo, si se quiere crear un nuevo producto, se enviaría una solicitud POST a la API con la información del producto en el cuerpo de la solicitud.
+    \item \textbf{PUT:} Se utiliza para actualizar un recurso existente. Por ejemplo, si se quiere actualizar la información de un producto, se enviaría una solicitud PUT a la API con la información actualizada en el cuerpo de la solicitud.
+    \item \textbf{PATCH:} Se utiliza para actualizar parcialmente un recurso existente. Por ejemplo, si se quiere actualizar solo el precio de un producto, se enviaría una solicitud PATCH a la API con la información actualizada en el cuerpo de la solicitud.
+    \item \textbf{DELETE:} Se utiliza para eliminar un recurso. Por ejemplo, si se quiere eliminar un producto, se enviaría una solicitud DELETE a la API con la URL del producto a eliminar.
+\end{itemize}
+
+Tal como se puede observar en los ejemplos de cada uno de los métodos, la API REST utiliza URLs para identificar los recursos. Cada recurso tiene una URL única que se utiliza para acceder a él. Por ejemplo, la URL para acceder a la lista de productos podría ser \texttt{https://api.ejemplo.com/products}, mientras que la URL para acceder a un producto específico podría ser \texttt{https://api.ejemplo.com/products/1}, donde el número 1 representa el identificador único del producto. Algunos métodos, como pueden ser el POST y el PATCH incluyen un \textit{body}, que es el cuerpo de la solicitud, donde se encuentran los datos que se envían en la petición.
+
+Tanto el \textit{body} como la respuesta de la API acostumbran a estar en formato JSON, un formato basado en texto estructurado de manera que permite representar datos de manera sencilla y legible. En la figura \ref{fig:api_example} se puede ver un ejemplo de una petición a una API REST y la respuesta en formato JSON. En este caso, se está realizando una petición GET a la API para obtener el producto que tiene \texttt{id = 1}, y la respuesta es un objeto JSON que contiene la información de dicho producto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/api_example.pdf}
+    \caption{Ejemplo de una petición a una API REST con la correspondiente respuesta en formato JSON.}
+    \label{fig:api_example}
+\end{figure}
+
+Por último, es importante destacar los llamados \textit{query parameters}, que son parámetros que se pueden añadir a la URL para filtrar o modificar la respuesta de la API. Por ejemplo, si se quiere obtener solo los productos que tienen stock, se podría añadir un parámetro a la URL como \texttt{?stock=true}. Esto permite que la API devuelva solo los productos que cumplen con ese criterio, lo que puede ser útil para optimizar las consultas y reducir la cantidad de datos transferidos. De esta manera, para obtener los productos que están en oferta, la URL de la API podría ser \texttt{https://api.ejemplo.com/products?stock=true}. Esto puede verse en la figura \ref{fig:query_params_example}, donde se muestra un ejemplo de una respuesta a una petición sin y con \textit{query parameters}. En este caso, la primera respuesta devuelve todos los productos, mientras que la segunda respuesta devuelve solo los productos que tienen un stock superior a 0.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/theoric_frame/query_params_example.pdf}
+    \caption{Ejemplo de una respuesta a una petición sin y con \textit{query parameters}.}
+    \label{fig:query_params_example}
+\end{figure}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{figures/theoric_frame/use_case.pdf}
+%     \caption{Diagrama de flujo del proceso de autenticación de usuario como caso de uso.}
+%     \label{fig:use_case}
+% \end{figure}
 
