@@ -23,7 +23,51 @@ Este enfoque, a pesar de ser más complejo, es el estándar en la actualidad y e
 \section{Diseño de la base de datos}
 \label{sec:diseno_base_datos}
 
-Para estructurar el proyecto, se ha optado por empezar definiendo la base de datos.
+Para estructurar el proyecto, se ha optado por empezar definiendo la base de datos. Diseñar la base de datos inicialmente permite tener una visión general de como se va a estructurar el proyecto y como sus distintas partes se van a relacionar entre sí. Al fin y al cabo, la base de datos es el núcleo de la aplicación, ya que de ella dependen todas las funcionalidades.
+
+\subsection{Bloques de funcionalidades}
+
+Antes de empezar a diseñar la base de datos, se deben definir las funcionalidades claves de la aplicación para así poder estructurar los datos de manera que se puedan implementar de la mejor manera posible. En este caso, las funcionalidades claves son las siguientes:
+
+\begin{itemize}
+    \item \textbf{Gestión de pedidos:} La herramienta debe centralizar todos los pedidos de los distintos canales de venta en línea y permitir la gestión de los mismos. Esto incluye la posibilidad de crear, editar y eliminar pedidos, así como la posibilidad de marcar un pedido como enviado o entregado.
+    \item \textbf{Gestión de productos:} La herramienta debe permitir la gestión de los productos disponibles en los distintos canales de venta en línea. Esto incluye la posibilidad de crear, editar y eliminar productos de los distintos canales, así como la posibilidad de editar sus atributos, tales como el precio, la descripción y la imagen, entre muchos otros.
+    \item \textbf{Gestión de canales:} La herramienta debe permitir la gestión de los distintos canales de venta en línea. Esto incluye la posibilidad de crear, editar y eliminar canales.
+    \item \textbf{Gestión de usuarios:} La herramienta debe permitir la gestión de los usuarios que pueden acceder a la aplicación. Esto incluye la posibilidad de crear, editar y eliminar usuarios, así como la posibilidad de asignarles distintos permisos y roles dentro de la aplicación.
+\end{itemize}
+
+Con las tres funcionalidades clave definidas, se puede concluir que la base de datos debe contener tres tablas principales: una para los pedidos, otra para los productos, otra para los canales y una última para los usuarios. A partir de aquí, se pueden definir las distintas tablas que van a complementar las principales.
+
+\subsubsection{Bloque de pedidos}
+
+El bloque de pedidos es el conjunto de tablas y relaciones que almacenan toda la información correspondiente a los pedidos. En cada pedido es importante almacenar la información de éste, como el estado, la fecha, el método de pago, el canal de venta, entre otros. Además, para saber donde se debe enviar el pedido, es importante almacenar la información del cliente, como su nombre, dirección y teléfono. Por último, también es importante almacenar la información de los productos que componen el pedido, como su nombre, precio y cantidad solicitada.
+
+Conociendo la información que se debe almacenar, se pueden definir las siguientes tablas:
+
+\begin{itemize}
+    \item \textbf{Pedido [\texttt{order}]:} Esta tabla almacena la información general de cada pedido. Los campos que contiene son los siguientes:
+          %   \begin{itemize}
+          %       \item \texttt{id}: Identificador único del pedido. \textit{Clave primaria (entero)}.
+          %       \item \texttt{order\_id}: Identificador del pedido en el canal de venta. \textit{Cadena de caracteres}.
+          %       \item \texttt{status}: Estado del pedido (pendiente, enviado, entregado, cancelado). \textit{Entero}.
+          %       \item \texttt{order\_date}: Fecha en la que se realizó el pedido. \textit{Fecha y hora}.
+          %       \item \texttt{total\_price}: Precio total del pedido. \textit{Decimal}.
+          %       \item \texttt{ticket}: Número de ticket del pedido. \textit{Cadena de caracteres}.
+          %       \item \texttt{ticket\_refund}: Número de ticket de la devolución del pedido. \textit{Cadena de caracteres}.
+          %       \item \texttt{pay\_method}: Método de pago del pedido (tarjeta, transferencia, efectivo). \textit{Entero}.
+          %       \item \texttt{package\_quantity}: Cantidad de bultos (paquetes) del pedido. \textit{Entero}.
+          %       \item \texttt{weight}: Peso del pedido. \textit{Decimal}.
+          %       \item \texttt{notes}: Notas del pedido. \textit{Cadena de caracteres}.
+          %       \item \texttt{origin}: Origen del pedido (creado automáticamente, importado, manual). \textit{Entero}.
+          %       \item \texttt{updated\_at}: Fecha de la última actualización del pedido. \textit{Fecha y hora}.
+          %       \item \texttt{carrier\_id}: Identificador del transportista del pedido. \textit{Entero y relación N:1 con la tabla} \texttt{carrier}.
+          %       \item \texttt{customer\_id}: Identificador del cliente del pedido. \textit{Entero y relación N:1 con la tabla} \texttt{customer}.
+          %       \item \texttt{marketplace\_id}: Identificador del canal de venta del pedido. \textit{Entero y relación N:1 con la tabla} \texttt{marketplace}.
+          %   \end{itemize}
+          \input{tables/design_develop/db_order}
+
+    \item \textbf{Cliente [\texttt{customer}]:} Esta tabla almacena la información del cliente. Los campos que contiene son los siguientes:
+\end{itemize}
 
 \begin{figure}
     \centering
