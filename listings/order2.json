@@ -1,0 +1,28 @@
+    "bill_country": 0,
+    "ship_phone": "333333333",
+    "ship_email": "charlie.brown@example.com",
+    "ship_firstname": "Charlie",
+    "ship_lastname": "Brown",
+    "ship_company": "Peanuts Inc.",
+    "ship_address": "555 Peanut Street",
+    "ship_city": "Santa Rosa",
+    "ship_zipcode": "95404",
+    "ship_country": 0
+  },
+  "order_items": [
+    {
+      "id": 6,
+      "marketplace_product": 1,
+      "quantity": 2,
+      "purchase_price": "99.50",
+      "order": 4
+    },
+    {
+      "id": 7,
+      "marketplace_product": 4,
+      "quantity": 1,
+      "purchase_price": "0.50",
+      "order": 4
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.1.0">
+  <diagram name="Page-1" id="dV4gOR_IBtZmmg_PkJwF">
+    <mxGraphModel dx="1426" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-97" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="258" y="340" width="311" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-69" value="Bloque de productos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="290" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-70" value="\project\products\models.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="494" y="170" width="300" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-71" value="Product" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="494" y="215" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-72" value="MarketplaceProduct" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="614" y="215" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-73" value="ProductAttributeType" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="494" y="255" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-74" value="ProductAttribute" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="494" y="295" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-75" value="MarketplaceProductAttributeType" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="614" y="255" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-76" value="MarketplaceProductAttribute" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="614" y="295" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-77" value="Bloque de canales" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-78" value="\project\marketplaces\models.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="34" y="170" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-79" value="Marketplace" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="34" y="215" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-85" value="Bloque de pedidos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="270" y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-86" value="\project\orders\models.py" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="264" y="170" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-87" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="264" y="255" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-88" value="Carrier" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="374" y="255" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-89" value="Order" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="264" y="215" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-90" value="OrderItem" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="374" y="215" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-91" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="268" y="350" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-92" value="Bloque de&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;funcionalidad&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="303" y="350" width="96" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-93" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="479" y="350" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-94" value="Modelo" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="514" y="350" width="45" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-95" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="393" y="350" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-96" value="Fichero" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="428" y="350" width="61" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.1.0">
+  <diagram name="Page-1" id="dV4gOR_IBtZmmg_PkJwF">
+    <mxGraphModel dx="1426" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-100" value="marketplace" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;strokeColor=#6c8ebf;fontSize=16;fontStyle=1;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="70" y="160" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-101" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-100">
+          <mxGeometry y="30" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-102" value="id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#d6b656;overflow=hidden;fillColor=#fff2cc;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;fontStyle=1" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-101">
+          <mxGeometry width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-103" value="name" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#d6b656;overflow=hidden;fillColor=#fff2cc;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;fontStyle=1" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-101">
+          <mxGeometry x="60" width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-104" value="country" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=#d6b656;overflow=hidden;fillColor=#fff2cc;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;fontStyle=1" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-101">
+          <mxGeometry x="120" width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-105" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-100">
+          <mxGeometry y="60" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-106" value="1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-105">
+          <mxGeometry width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-107" value="Amazon" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-105">
+          <mxGeometry x="60" width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-108" value="es" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=16;" vertex="1" parent="SCQOQ3xM6eZPDDU1Whtt-105">
+          <mxGeometry x="120" width="60" height="30" as="geometry">
+            <mxRectangle width="60" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="SCQOQ3xM6eZPDDU1Whtt-145" target="SCQOQ3xM6eZPDDU1Whtt-146">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-145" value="marketplace = Marketplace.objects.filter(id=1)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="289" y="187.5" width="250" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-146" value="&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;{&lt;/font&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;&amp;nbsp; &quot;id&quot;: &lt;font style=&quot;color: rgb(204, 0, 0);&quot;&gt;1&lt;/font&gt;,&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;font-family: &amp;quot;Cascadia Code&amp;quot;; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &quot;name&quot;: &lt;/span&gt;&lt;font style=&quot;font-family: &amp;quot;Cascadia Code&amp;quot;; background-color: transparent; color: rgb(204, 0, 0);&quot;&gt;&quot;Amazon&quot;&lt;/font&gt;&lt;span style=&quot;font-family: &amp;quot;Cascadia Code&amp;quot;; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;,&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;&amp;nbsp; &quot;country&quot;: &lt;font style=&quot;color: rgb(204, 0, 0);&quot;&gt;&quot;es&quot;&lt;/font&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;}&lt;/font&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="580" y="160" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-147" value="BASE DE DATOS" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="85" y="100" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-148" value="MODELO" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="339" y="100" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-149" value="SERIALIZER" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="580" y="100" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-150" value="Sin abstracción" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="115" y="120" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-151" value="Sin abstracción" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="610" y="120" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-152" value="Con abstracción" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="369" y="120" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SCQOQ3xM6eZPDDU1Whtt-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="SCQOQ3xM6eZPDDU1Whtt-101" target="SCQOQ3xM6eZPDDU1Whtt-145">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

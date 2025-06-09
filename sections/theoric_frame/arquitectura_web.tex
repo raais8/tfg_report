@@ -23,6 +23,7 @@ Estos tres componentes se dividen en dos bloques: el \textit{frontend} y el \tex
 \end{figure}
 
 \subsection{\textit{Frontend}}
+\label{mt:subsec:frontend}
 
 El \textit{frontend} es la parte de la aplicación que interactúa con el usuario. Esto incluye la interfaz de usuario, que es la parte de la aplicación que el usuario ve y con la que interactúa, así como la lógica de presentación, que es la parte de la aplicación que se encarga de mostrar los datos al usuario. El \textit{frontend} se desarrolla principalmente utilizando HTML, CSS y JavaScript, tecnologías que se ejecutan de manera nativa en los navegadores.
 
@@ -44,6 +45,7 @@ React se desarrolla utilizando JavaScript, un lenguaje de programación de tipad
 Finalmente, otro motivo relevante para la elección de React es su gran comunidad de desarrolladores, así como la amplia disponibilidad de librerías y herramientas que extienden sus funcionalidades básicas. La elección de React y el detalle de su funcionamiento se explican en profundidad en la sección \textcolor{red}{(Añadir sección parte desarrollo frontend)}.
 
 \subsection{\textit{Backend}}
+\label{subsec:backend}
 
 El \textit{backend} es la parte de la aplicación que administra la funcionalidad general de la aplicación. Cuando el usuario interactúa con el \textit{frontend}, la interacción envía una solicitud al \textit{backend} para que la procese y devuelva una respuesta \cite{aws_frontend_backend}. De este modo, el \textit{backend} se encarga de gestionar la lógica de negocio, es decir, es la parte de la aplicación que se encarga de procesar los datos y realizar las operaciones necesarias para realizar las distintas funcionalidades de ésta. Adicionalmente contiene la base de datos, que es donde se almacenan todos los datos de la aplicación.
 
@@ -69,10 +71,10 @@ El funcionamiento del modelo MVC se representa en la figura \ref{fig:mvc}. Para 
     \label{fig:mvc}
 \end{figure}
 
-Una mayor profundidad sobre el funcionamiento de los modelos y la base de datos se puede encontrar en la sección \ref{sec:base_datos} y sobre la comunicación entre el \textit{frontend} y el \textit{backend} en la sección \ref{sec:api}.
+Una mayor profundidad sobre el funcionamiento de los modelos y la base de datos se puede encontrar en la sección \ref{mt:subsec:base_datos} y sobre la comunicación entre el \textit{frontend} y el \textit{backend} en la sección \ref{mt:subsec:api}.
 
 \subsection{Base de datos}
-\label{sec:base_datos}
+\label{mt:subsec:base_datos}
 
 La base de datos es una colección de datos electrónicamente almacenados y organizados de manera que se puedan acceder, gestionar y actualizar fácilmente. En el caso de una aplicación web, la base de datos se utiliza para almacenar toda la información necesaria para el funcionamiento de ésta \cite{aws_database}.
 
@@ -89,7 +91,7 @@ Con el tipo de base de datos definido, es fundamental comprender el funcionamien
     \label{fig:rel_db}
 \end{figure}
 
-Para crear, modificar, eliminar y consultar los datos de una base de datos relacional, se utiliza SQL (\textit{Structured Query Language}), un lenguaje de programación diseñado específicamente para gestionar bases de datos. SQL permite realizar operaciones como la creación de tablas, la inserción de datos, la actualización de registros y la consulta de información \cite{aws_sql}. No obstante, realizar consultas SQL directamente puede ser complicado y propenso a errores, especialmente en aplicaciones más complejas. Por este motivo, Django ofrece una capa de abstracción llamado sistema ORM (\textit{Object-Relational Mapping}), que permite interactuar con la base de datos utilizando objetos y clases de Python en lugar de escribir consultas SQL directamente. De esta manera, con ORM cada tabla de la base de datos es representada por lo que se llama un modelo, que es una clase de Python que define la estructura de la tabla y sus relaciones con otras tablas. Cada instancia de un modelo representa una fila en la tabla correspondiente, y los atributos de la clase representan las columnas de la tabla. Este enfoque se puede ver ejemplificado en la figura \ref{fig:orm_vs_sql}, donde se muestra una consulta SQL y su equivalente en ORM para obtener los campos \texttt{total} y \texttt{date} del registro que tiene \texttt{customer = 7} de la tabla \texttt{order}.
+Para crear, modificar, eliminar y consultar los datos de una base de datos relacional, se utiliza SQL (\textit{Structured Query Language}), un lenguaje de programación diseñado específicamente para gestionar bases de datos. SQL permite realizar operaciones como la creación de tablas, la inserción de datos, la actualización de registros y la consulta de información \cite{aws_sql}. No obstante, realizar consultas SQL directamente puede ser complicado y propenso a errores, especialmente en aplicaciones más complejas. \textcolor{red}{Explicar fallos seguridad, querys mal optimizadas...} Por este motivo, Django ofrece una capa de abstracción llamado sistema ORM (\textit{Object-Relational Mapping}), que permite interactuar con la base de datos utilizando objetos y clases de Python en lugar de escribir consultas SQL directamente. De esta manera, con ORM cada tabla de la base de datos es representada por lo que se llama un modelo, que es una clase de Python que define la estructura de la tabla y sus relaciones con otras tablas. Cada instancia de un modelo representa una fila en la tabla correspondiente, y los atributos de la clase representan las columnas de la tabla. Este enfoque se puede ver ejemplificado en la figura \ref{fig:orm_vs_sql}, donde se muestra una consulta SQL y su equivalente en ORM para obtener los campos \texttt{total} y \texttt{date} del registro que tiene \texttt{customer = 7} de la tabla \texttt{order}.
 
 \begin{figure}[H]
     \centering
@@ -99,7 +101,7 @@ Para crear, modificar, eliminar y consultar los datos de una base de datos relac
 \end{figure}
 
 \subsection{API}
-\label{sec:api}
+\label{mt:subsec:api}
 
 La API (\textit{Application Programming Interface}) es un conjunto de mecanismos que permiten la comunicación entre diferentes componentes de software mediante unas definiciones y unos protocolos. En el caso de una aplicación web, la API es la interfaz que permite al \textit{frontend} comunicarse con el \textit{backend} y viceversa. Esto significa que cuando el usuario interactúa con el \textit{frontend} se envían solicitudes a la API (al \textit{backend}), que las procesa y devuelve una respuesta. No obstante, las API no solo permiten la comunicación entre el \textit{frontend} y el \textit{backend}, sino que también permiten la comunicación entre diferentes aplicaciones. Un ejemplo que aplica a este proyecto es la comunicación entre el \textit{backend} de la aplicación y un \textit{marketplace}, donde se emplea una API. Para obtener un pedido de un \textit{marketplace}, el \textit{backend} debe enviar una solicitud a la API del \textit{marketplace} y recibe una respuesta con la información del pedido \cite{aws_api}.
 
