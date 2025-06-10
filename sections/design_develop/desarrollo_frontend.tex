@@ -75,9 +75,9 @@ El orden de las secciones del menú lateral sigue una lógica que facilita la na
 La vista de pedidos es una de las más importantes de la plataforma, ya que permite gestionar todos los pedidos provenientes de los distintos canales de venta. Gestionar los pedidos implica poder verlos, editarlos y crear de nuevos. Así pues, dicha vista se ha dividido en dostres:
 
 \begin{itemize}
-    \item \textbf{Vista general de pedidos}: Esta vista permite al usuario ver todos los pedidos que ha recibido la plataforma, independientemente del canal de venta del que provengan. En esta vista se pueden filtrar los pedidos por el canal de ventas además de poder buscarlos por su identificador o el nombre del cliente.
-    \item \textbf{Vista detallada de pedido}: Esta vista permite al usuario ver un pedido concreto, así como editarlo. En esta vista se pueden ver todos los detalles del pedido, incluyendo los productos que lo componen, el estado del pedido y la información del cliente. Además, se pueden realizar acciones como editar el estado del pedido o añadir nuevos productos al mismo.
-    \item \textbf{Vista de creación de pedido}: Esta vista permite al usuario crear un nuevo pedido. En esta vista se pueden seleccionar los productos que componen el pedido, así como introducir la información del cliente y el canal de venta al que pertenece el pedido. Una vez creado el pedido, este se añadirá a la lista de pedidos y estará disponible para su gestión.
+    \item \textbf{Vista general de pedidos}: Esta vista permite al usuario ver todos los pedidos que ha recibido la plataforma, independientemente del canal de venta del que provengan. Se pueden filtrar los pedidos por el canal de ventas además de poder buscarlos por su identificador o el nombre del cliente.
+    \item \textbf{Vista detallada de pedido}: Esta vista permite al usuario ver un pedido concreto, así como editarlo. Se pueden ver todos los detalles del pedido, incluyendo los productos que lo componen, el estado del pedido y la información del cliente. Además, se pueden realizar acciones como editar el estado del pedido o añadir nuevos productos al mismo.
+    \item \textbf{Vista de creación de pedido}: Esta vista permite al usuario crear un nuevo pedido. Se pueden seleccionar los productos que componen el pedido, así como introducir la información del cliente y el canal de venta al que pertenece el pedido. Una vez creado el pedido, este se añadirá a la lista de pedidos y estará disponible para su gestión.
 \end{itemize}
 
 \begin{figure}
@@ -128,7 +128,7 @@ En pedidos creados manualmente, se pueden añadir o quitar productos al pedido, 
     \label{fig:dev:ss:modal_edicion_productos_pedido}
 \end{figure}
 
-Este modal incluye características bastante complejas, como es la búqueda de productos dinámicamente. A medida que el usuario escribe en el campo de búsqueda el nombre o SKU del producto, se realiza una petición al \textit{backend} para obtener los productos que coinciden con la búsqueda. Solo los productos que se encuentran en el canal de venta del pedido se mostrarán en la lista de resultados, lo que asegura que solo se puedan añadir productos válidos al pedido. Además, para evitar que se hagan demanasiadas peticiones al \textit{backend}, se ha implementado un \textit{debounce} de 500 milisegundos, lo que significa que la búsqueda solo se realizará si el usuario deja de escribir durante ese tiempo. Esto reduce la carga en el servidor y mejora la experiencia del usuario al evitar peticiones innecesarias.
+Este modal incluye características bastante complejas, como es la búsqueda de productos dinámicamente. A medida que el usuario escribe en el campo de búsqueda el nombre o SKU del producto, se realiza una petición al \textit{backend} para obtener los productos que coinciden con la búsqueda. Solo los productos que se encuentran en el canal de venta del pedido se mostrarán en la lista de resultados, lo que asegura que solo se puedan añadir productos válidos al pedido. Además, para evitar que se hagan demasiadas peticiones al \textit{backend}, se ha implementado un \textit{debounce} de 500 milisegundos, lo que significa que la búsqueda solo se realizará si el usuario deja de escribir durante ese tiempo, funcionalidad que se puede ver en la figura \ref{fig:dev:ss:busqueda_debounced}. Esto reduce la carga en el servidor y mejora la experiencia del usuario al evitar peticiones innecesarias.
 
 \begin{figure}[H]
     \centering
@@ -146,3 +146,144 @@ Este modal incluye características bastante complejas, como es la búqueda de p
     \caption{Proceso de búsqueda de productos con \textit{debounce}.}
     \label{fig:dev:ss:busqueda_debounced}
 \end{figure}
+
+Cuando el usuario ha añadido, eliminado o editado los productos del pedido, puede pulsar el botón de \textit{Save} para guardar los cambios realizados. Esto enviará una petición al \textit{backend} para actualizar el pedido con los nuevos productos y cantidades. Aquí es donde se hace uso de las características de acciones masivas explicadas en la sección \ref{dev:subsec:implementaciones_relevantes}.
+
+La última de las vistas de pedidos es la vista de creación manual de pedido. Crear un pedido manualmente es una tarea considerablemente tediosa, ya que hay que introducir una amplia variedad de datos. Por este motivo, se ha optado por dividir la creación del pedido en tres pasos:
+
+\begin{enumerate}
+    \item \textbf{Información general:} \\
+          En el primer paso se debe introducir la información general del pedido, como el canal de venta al que pertenece, el identificador del pedido, la fecha de creación, el estado del pedido, entre otros. Parte de esta información, como es el ticket, es opcional y se puede dejar en blanco si no se dispone de ella. Otros de los campos, como el canal de venta o el método de pago, son obligatorios y deben ser seleccionados entre las opciones disponibles de su desplegable.
+          \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/creacion_pedido_1.png}
+              \caption{Información general del pedido.}
+              \label{fig:dev:ss:creacion_pedido_1}
+          \end{figure}
+    \item \textbf{Información del cliente:} \\
+          En el segundo paso se debe introducir la información del cliente, tanto la de facturación como la de envío. En este caso, todos los campos son obligatorios, ya que es necesario disponer de toda la información del cliente para poder gestionar el pedido correctamente. Sin embargo, para hacer el formulario más ágil existen dos posibles acciones que se pueden realizar:
+          \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/creacion_pedido_2.png}
+              \caption{Información del cliente del pedido.}
+              \label{fig:dev:ss:creacion_pedido_2}
+          \end{figure}
+          \begin{itemize}
+              \item \textbf{Rellenar automáticamente los campos si el cliente ya existe:} Si el cliente ya existe en la base de datos, este puede ser buscado mediante su correo electrónico. El método de búsqueda funciona de forma similar al de la búsqueda de productos, es decir, mediante un \textit{debounce}. Si se encuentra un cliente con ese correo, los campos de información del cliente se rellenarán automáticamente con los datos del cliente encontrado y se bloquearán para evitar que se modifiquen.
+              \item \textbf{Clonar los datos de facturación a los de envío:} Si el cliente tiene la misma información de facturación y envío, se puede marcar la opción de \textit{Same as billing} para clonar los datos de facturación a los de envío. Con esta opción marcada los campos de envío se rellenarán automáticamente con los datos de facturación a medida que se vayan introduciendo y se bloquearán para evitar que se modifiquen.
+          \end{itemize}
+          \begin{figure}[H]
+              \centering
+              \begin{subfigure}{0.45\linewidth}
+                  \centering
+                  \includegraphics[width=\linewidth]{figures/design_develop/screenshots/creacion_pedido_2_bloqueado_search.png}
+                  \caption{Campos de información del cliente bloqueados al buscar un cliente existente.}
+              \end{subfigure}
+              \hfill
+              \begin{subfigure}{0.45\linewidth}
+                  \centering
+                  \includegraphics[width=\linewidth]{figures/design_develop/screenshots/creacion_pedido_2_bloqueado_check.png}
+                  \caption{Campos de información del cliente bloqueados al clonar los datos de facturación.}
+              \end{subfigure}
+              \caption{Campos de información del cliente bloqueados al buscar un cliente existente o clonar los datos de facturación a los de envío.}
+              \label{fig:dev:ss:creacion_pedido_2_bloqueados}
+          \end{figure}
+    \item \textbf{Información de productos:} \\
+          Por último, en el tercer paso se deben añadir los productos que componen el pedido. Para ello, se puede buscar un producto concreto mediante su nombre o SKU, y añadirlo al pedido con la cantidad y el precio correspondientes. Al igual que en la vista detallada de pedidos y en la búsqueda de clientes, en la búsqueda de productos también se ha implementado un \textit{debounce} para evitar hacer demasiadas peticiones al \textit{backend} y una mejor experiencia de usuario. El precio total del pedido se calcula automáticamente en función de los productos añadidos y sus cantidades, además de que el impuesto aplicable se calcula automáticamente en función del canal de venta seleccionado.
+          \begin{figure}[H]
+              \centering
+              \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/creacion_pedido_3.png}
+              \caption{Información de productos del pedido.}
+              \label{fig:dev:ss:creacion_pedido_3}
+          \end{figure}
+\end{enumerate}
+
+Como se puede observar a lo largo de las distintas figuras, para cambiar entre los distintos pasos se ha hecho implementado una barra de navegación que permite al usuario ir hacia adelante y hacia atrás entre los pasos. Para finalizar la creación del pedido, el usuario debe pulsar el icono de guardar que se encuentra en dicha barra de navegación cuando ha completado todos los pasos. Esto enviará una petición al \textit{backend} para crear el nuevo pedido con la información introducida. Si todo es correcto, el pedido se añadirá a la lista de pedidos y estará disponible para su gestión.
+
+Sin embargo, en la vista de creación de pedidos hay otro elemento que aún no se ha mencionado: la tarjeta lateral de resumen del pedido. Esta tarjeta se encuentra en la parte derecha de la vista y muestra un resumen de la información introducida en los distintos pasos. A medida que el usuario va completando los pasos, la tarjeta se actualiza automáticamente para reflejar la información introducida. Esto permite al usuario tener una visión general del pedido que está creando y asegurarse de que toda la información es correcta antes de guardarlo. No obstante, esta tarjeta tiene otra utilidad adicional, la cual justifica su presencia: indicia al usuario que campos son incorrectos cuando se intenta guardar el pedido. Si algún campo es incorrecto o no se ha completado, la tarjeta mostrará un error en dicho campo y, pasando el ratón por encima, se mostrará un mensaje indicando qué es lo que falta por completar o qué es lo que está mal. Este comportamiento se puede observar en la figura \ref{fig:dev:ss:tarjeta_resumen_pedido}, donde se muestra un ejemplo de cómo se indica al usuario que el número de pedido es obligatorio y debe ser introducido para poder guardar el pedido.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/tarjeta_resumen_antes_guardar.png}
+        \caption{Tarjeta de resumen del pedido antes de guardar, no mostrando ningún error.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/tarjeta_resumen_despues_guardar.png}
+        \caption{Tarjeta de resumen del pedido después de intentar guardar, mostrando un error.}
+    \end{subfigure}
+    \caption{Tarjeta de resumen del pedido antes y después de intentar guardar.}
+    \label{fig:dev:ss:tarjeta_resumen_pedido}
+\end{figure}
+
+\subsubsection{Vista de productos}
+\label{dev:subsubsec:vista_productos}
+
+La vista de productos es otra de las vistas principales de la plataforma, ya que permite gestionar todos los productos disponibles en los distintos canales de venta. En este caso, la vista se ha dividido en dos partes:
+\begin{itemize}
+    \item \textbf{Vista general de productos}: Esta vista permite al usuario ver todos los productos disponibles en la plataforma, independientemente del canal de venta al que pertenezcan. Se pueden filtrar los productos por el canal de venta, además de poder buscarlos por su nombre o SKU.
+    \item \textbf{Vista detallada de producto}: Esta vista permite al usuario ver un producto concreto, así como editarlo. Se pueden ver todos los detalles del producto, incluyendo su nombre, descripción, precio y otros atributos. También se pueden editar los atributos del producto para cada uno de los canales de venta disponibles, lo que permite personalizar el producto según las necesidades de cada canal.
+\end{itemize}
+
+
+
+
+\subsubsection{Vista de inicio}
+\label{dev:subsubsec:vista_inicio}
+La vista de inicio es la última de las vistas principales de la plataforma, y proporciona una visión general del estado de los pedidos y productos. Esta vista se ha diseñado para ofrecer al usuario una rápida visión del estado de la plataforma, permitiendo ver información relevante sin necesidad de navegar por las distintas vistas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/dashboard.png}
+    \caption{Vista de inicio de la plataforma.}
+    \label{fig:dev:ss:vista_inicio}
+\end{figure}
+
+Esta es la vista que el usuario ve al acceder a la plataforma, y se ha diseñado para que este pueda tener una visión general de como van los distintos canales de venta. Para transmitir esta información de forma clara, la mejor manera es seguramente mediante gráficos. Para implementarlos, se ha tenido que estudiar que librerías existen y que puntos fuertes y débiles tienen cada una de ellas. También se ha valorado su escalabilidad, pues es importante que en un futuro se puedan añadir más. Con todos estos factores sobre la mesa, se ha optado por utilizar la librería Recharts, la cual permite una amplia personalización y es relativamente fácil de usar. Además, es compatible con React y TypeScript, lo que facilita su integración en la plataforma.
+
+Con la librería para implementar gráficos definida, se ha dividido la vista en cuatro secciones principales, que corresponden a cuatro componentes:
+
+\begin{enumerate}
+    \item \textbf{Resumen de pedidos:} \\
+          Este componente proporciona una visión general del estado de los pedidos en la plataforma, permitiendo al usuario saber rápidamente si tiene trabajo de preparación pendiente. Para ello, se presentan tres bloques informativos: el número total de pedidos, el número de pedidos pendientes y el número de pedidos en preparación.
+    \item \textbf{Productos por canal:} \\
+          Este componente muestra un gráfico de barras que representa el número de productos disponibles en cada canal de venta. Esto permite al usuario ver rápidamente en qué canales tiene más productos y dónde podría necesitar añadir más.
+    \item \textbf{Ingresos por canal:} \\
+          Este componente muestra un gráfico circular que representa los ingresos generados por cada canal de venta. Esto permite al usuario ver rápidamente qué canales son más rentables y dónde podría necesitar centrar sus esfuerzos. Para permitir un mayor control sobre los datos mostrados, se ha añadido un filtro por fecha que permite al usuario seleccionar el rango de fechas para el que se quieren ver los ingresos. Este filtro es opcional, y si no se selecciona, se mostrarán los ingresos del año actual.
+    \item \textbf{Ingresos por canal a lo largo del tiempo:} \\
+          Este componente muestra un gráfico de líneas que representa los ingresos generados por cada canal de venta o en total a lo largo del tiempo. Esto permite al usuario ver la evolución de los ingresos y detectar tendencias o patrones en el comportamiento de los canales de venta. Al igual que en el componente anterior, se ha añadido un filtro por fecha que permite al usuario seleccionar el rango de fechas para el que se quieren ver los ingresos. Por último, también se ha añadido un filtro por canal de venta que permite al usuario seleccionar qué canales de venta quiere ver en el gráfico.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/dash_sec1.png}
+        \caption{Sección de resumen de pedidos.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/dash_sec2.png}
+        \caption{Sección de productos por canal.}
+    \end{subfigure}
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/dash_sec3.png}
+        \caption{Sección de ingresos por canal filtrado por el último año.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/design_develop/screenshots/dash_sec4.png}
+        \caption{Sección de ingresos por canal a lo largo del tiempo filtrado por el último año.}
+    \end{subfigure}
+    \caption{Secciones de la vista de inicio.}
+    \label{fig:dev:ss:vista_inicio_secciones}
+\end{figure}
+
+
+Todo este conjunto de gráficos y datos representa una primera iteración de lo que en un futuro se pretende que sea un panel de control más completo y detallado. La idea es que, a medida que la plataforma evolucione, se puedan añadir más gráficos y datos relevantes para el usuario, de manera que este tenga acceso a un conjunto de herramientas que le permitan analizar como están funcionando los distintos canales de venta y tomar decisiones informadas.

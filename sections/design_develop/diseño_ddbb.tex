@@ -3,23 +3,23 @@
 
 Para estructurar el proyecto, se ha optado por empezar definiendo la base de datos. Diseñar la base de datos inicialmente permite tener una visión general de como se va a estructurar el proyecto y como sus distintas partes se van a relacionar entre sí. Al fin y al cabo, la base de datos es el núcleo de la aplicación, ya que de ella dependen todas las funcionalidades.
 
-En concreto, para el proyecto se ha decidido hacer uso del sistema de gestión de bases de datos PostgreSQL. Esta elección es resultado de la experiencia previa que he tenido con este sistema, ya que he trabajado con él en proyectos anteriores y me he familiarizado con su funcionamiento. Además, PostgreSQL es un sistema de código abierto, lo que significa que es gratuito y se puede utilizar sin restricciones, además de ser muy robusto y escalable, lo que lo hace ideal para aplicaciones de gran tamaño, como podría ser esta en un futuro. Por último, es el sistema más recomendado por Django, lo que facilita la integración entre ambos.
+En concreto, para el proyecto se ha decidido hacer uso del sistema de gestión de bases de datos PostgreSQL. Esta elección es resultado de la experiencia previa que he tenido con este sistema, ya que he trabajado con él en proyectos anteriores y me he familiarizado con su funcionamiento. Además, PostgreSQL es un sistema de código abierto, lo que significa que es gratuito y se puede utilizar sin restricciones, siendo una solución muy robusta y escalable, lo que lo hace ideal para aplicaciones de gran tamaño, como podría ser esta en un futuro. Por último, es el sistema que mejor se integra con Django, por lo que es la opción más lógica a escoger.
 
 \subsection{Bloques de funcionalidades}
 \label{dev:subsec:bloques_funcionalidades}
 
-Antes de empezar a diseñar la base de datos, se deben definir los bloques claves de la aplicación para así poder estructurar los datos de manera que se puedan implementar de la mejor manera posible. En este caso, los bloques claves son los siguientes:
+Antes de empezar a diseñar la base de datos, se deben definir los bloques clave de la aplicación para así poder estructurar los datos de manera que se puedan implementar de la mejor manera posible. Estos bloques van a tener gran relevancia a lo largo del desarrollo, ya que van a definir como se estructura todo: tanto el \textit{backend} como el \textit{frontend}. Consecuentemente, los bloques de funcionalidades que se han definido son los siguientes:
 
 \begin{itemize}
     \item \textbf{Bloque de canales:} La herramienta debe permitir la gestión de los distintos canales de venta en línea. Aunque el usuario no crea ni edita de manera directa los canales de venta, interactúa con ellos, de manera que su información debe estar almacenada en la base de datos.
-    \item \textbf{Bloque de pedidos:} La herramienta debe centralizar todos los pedidos de los distintos canales de venta en línea y permitir la gestión de los mismos. Esto incluye la posibilidad de crear, editar y eliminar pedidos, así como la posibilidad de marcar un pedido como enviado o entregado.
-    \item \textbf{Bloque de productos:} La herramienta debe permitir la gestión de los productos disponibles en los distintos canales de venta en línea. Esto incluye la posibilidad de crear, editar y eliminar productos de los distintos canales, así como la posibilidad de editar sus atributos, tales como el precio, la descripción y la imagen, entre muchos otros.
-    \item \textbf{Bloque de usuarios y autenticación:} La herramienta debe permitir la gestión de los usuarios que pueden acceder a la aplicación. Esto incluye la posibilidad de crear, editar y eliminar usuarios, así como la posibilidad de asignarles distintos permisos y roles dentro de la aplicación.
+    \item \textbf{Bloque de pedidos:} La herramienta debe centralizar todos los pedidos de los distintos canales de venta en línea y permitir la gestión de los mismos. Esto incluye la posibilidad de crear, editar y eliminar pedidos, así como de cambiar el estado de los mismos.
+    \item \textbf{Bloque de productos:} La herramienta debe permitir la gestión de los productos disponibles en los distintos canales de venta en línea. Esto incluye la posibilidad de crear, editar y eliminar productos de los distintos canales, así como de editar sus atributos, tales como el precio, la descripción y la imagen, entre muchos otros. Además, debe permitir personalizar los atributos de cada producto según el canal de venta, ya que cada canal puede tener sus propios atributos y propiedades.
+          % \item \textbf{Bloque de usuarios y autenticación:} La herramienta debe permitir la gestión de los usuarios que pueden acceder a la aplicación. Esto incluye la posibilidad de crear, editar y eliminar usuarios, así como la de asignarles distintos permisos y roles dentro de la aplicación.
 \end{itemize}
 
-Con los bloques clave definidos, se puede concluir que la base de datos debe contener cuatro tablas principales: una para los pedidos, otra para los productos, otra para los canales y una última para los usuarios. A partir de aquí, se pueden definir las distintas tablas que van a complementar las principales.
+Con los bloques clave definidos, se puede concluir que la base de datos debe contener cuatro tablas principales: una para los pedidos, otra para los productos y una última para los canales. A partir de aquí, se pueden definir las distintas tablas que van a complementar las principales.
 
-Adicionalmente, dado que para este proyecto la aplicación se presenta como una fase inicial de una desarrollo mucho más grande, que en un futuro podría convertirse en una solución comercializable, es indispensable tener en cuenta la escalabilidad de toda la aplicación. Por este motivo, los cuatro bloques que a continuación se detallarán han sido diseñados de manera que se puedan ampliar en un futuro sin necesidad de realizar cambios significativos en la base de datos.
+Adicionalmente, dado que para este proyecto la aplicación se presenta como una fase inicial de una desarrollo mucho más grande, que en un futuro podría convertirse en una solución comercializable, es indispensable tener en cuenta la escalabilidad de toda la aplicación. Por este motivo, los tres bloques que a continuación se detallarán han sido diseñados de manera que se puedan ampliar en un futuro sin necesidad de realizar cambios significativos en la base de datos.
 
 \subsubsection{Bloque de canales de venta}
 
@@ -153,101 +153,103 @@ Con esta estructura discutida, en el esquema \ref{fig:products_db_diagram} se pu
     \label{fig:products_db_diagram}
 \end{figure}
 
-Por último, en las tablas de atributos, tanto de productos como de productos del canal de venta, se ha decidido hacer una columna para cada tipo de valor, es decir, una columna por si el valor es un número, una cadena de caracteres, una fecha, etc. Dichas columnas van acompañadas otra columna, llamada \texttt{data\_type} que indica el tipo de valor, de manera que se puede saber que columna contiene el valor del atributo. El tipo de atributo también tiene una columna \texttt{data\_type}, de manera que deben ser ambos coincidentes. Así pues, a modo de ejemplo, si el tipo de atributo es "Talla", el \texttt{data\_type} será "Número" y su entrada tendrá todas las columnas vacías exceptuando la columna \texttt{data\_int}.
+Por último, en las tablas de atributos, tanto de productos como de productos del canal de venta, se ha decidido hacer una columna para cada tipo de valor, es decir, una columna por si el valor es un número, una cadena de caracteres, una fecha, etc. Dichas columnas van acompañadas otra columna, llamada \texttt{data\_type} que indica el tipo de valor, de manera que se puede saber que columna contiene el valor del atributo. El tipo de atributo también tiene una columna \texttt{data\_type}, de manera que deben ser ambos coincidentes. Así pues, a modo de ejemplo, si el tipo de atributo es "Talla", el \texttt{data\_type} será "Integer" y su entrada tendrá todas las columnas vacías exceptuando la columna \texttt{data\_int}.
 
-\subsubsection{Bloque de usuarios y autenticación}
-\label{subsubsec:usuarios_autenticacion}
+\textcolor{red}{\textbf{Falta hacer una revisión más exhaustiva}}
 
-El bloque de usuarios y autenticación es el conjunto de tablas y relaciones que almacenan toda la información correspondiente a los usuarios que pueden acceder a la aplicación. Este bloque es esencial para la gestión de la aplicación, ya que permite controlar quién puede acceder a la aplicación y qué permisos tiene cada usuario. Un usuario no debe poder ver ni interactuar con los pedidos y productos de otros usuarios, por lo que es necesario implementar un sistema de autenticación y autorización que permita controlar el acceso a la aplicación y mostrar únicamente la información que le corresponde a cada uno.
+% \subsubsection{Bloque de usuarios y autenticación}
+% \label{subsubsec:usuarios_autenticacion}
 
-Hacer un buen sistema de usuarios o autenticación es normalmente una tarea muy compleja, ya que se deben tener en cuenta muchos aspectos, como la seguridad, la privacidad y los permisos, entre muchas otras cosas. Por este motivo, es una práctica bastante común y recomendable utilizar un sistema de gestión de usuarios ya existente e integrarlo y adaptarlo a las necesidades de la aplicación. Al considerarse una buena práctica, al menos para aplicaciones de tamaño pequeño o mediano, existen múltiples sistemas, como pueden ser Auth0, Firebase Authentication o Amazon Cognito. Sin embargo, como en este proyecto se ha optado por utilizar Django, se ha decidido utilizar su propio sistema de gestión de usuarios que este ofrece nativamente, ya que es un sistema robusto, seguro y fácil de integrar. Si bien es cierto que no es un sistema tan flexible como los mencionados anteriormente, es más que suficiente para las necesidades de la aplicación, al menos en un principio, y permite una integración rápida y sencilla con el \textit{backend}.
+% El bloque de usuarios y autenticación es el conjunto de tablas y relaciones que almacenan toda la información correspondiente a los usuarios que pueden acceder a la aplicación. Este bloque es esencial para la gestión de la aplicación, ya que permite controlar quién puede acceder a la aplicación y qué permisos tiene cada usuario. Un usuario no debe poder ver ni interactuar con los pedidos y productos de otros usuarios, por lo que es necesario implementar un sistema de autenticación y autorización que permita controlar el acceso a la aplicación y mostrar únicamente la información que le corresponde a cada uno.
 
-Las funcionalidades que ofrece el sistema de autenticación de Django son las siguientes:
+% Hacer un buen sistema de usuarios o autenticación es normalmente una tarea muy compleja, ya que se deben tener en cuenta muchos aspectos, como la seguridad, la privacidad y los permisos, entre muchas otras cosas. Por este motivo, es una práctica bastante común y recomendable utilizar un sistema de gestión de usuarios ya existente e integrarlo y adaptarlo a las necesidades de la aplicación. Al considerarse una buena práctica, al menos para aplicaciones de tamaño pequeño o mediano, existen múltiples sistemas, como pueden ser Auth0, Firebase Authentication o Amazon Cognito. Sin embargo, como en este proyecto se ha optado por utilizar Django, se ha decidido utilizar su propio sistema de gestión de usuarios que este ofrece nativamente, ya que es un sistema robusto, seguro y fácil de integrar. Si bien es cierto que no es un sistema tan flexible como los mencionados anteriormente, es más que suficiente para las necesidades de la aplicación, al menos en un principio, y permite una integración rápida y sencilla con el \textit{backend}.
 
-\begin{itemize}
-    \item Registro de usuarios: Permite a los usuarios registrarse en la aplicación, creando una cuenta con un nombre de usuario y una contraseña.
-    \item Inicio de sesión y cierre de sesión: Permite a los usuarios iniciar sesión en la aplicación con su nombre de usuario y contraseña, y cerrar sesión cuando lo deseen.
-    \item Cambios y recuperación de contraseñas: Permite a los usuarios cambiar su contraseña y recuperar su cuenta en caso de que la hayan olvidado.
-    \item Gestión de permisos y grupos de usuarios: Permite asignar permisos y roles a los usuarios, de manera que se pueda controlar qué funcionalidades pueden utilizar y qué datos pueden ver. Esto es especialmente útil para aplicaciones que tienen distintos tipos de usuarios, como administradores, clientes o empleados.
-    \item Control de acceso: Permite controlar el acceso a las distintas funcionalidades de la aplicación, de manera que solo los usuarios autorizados puedan acceder a ellas.
-\end{itemize}
+% Las funcionalidades que ofrece el sistema de autenticación de Django son las siguientes:
 
-Con las funcionalidades definidas, se pueden estudiar las tablas que Django va a utilizar para almacenar toda la información que permita realizar estas funcionalidades. En concreto, el sistema de autenticación hace uso las siguientes tablas:
+% \begin{itemize}
+%     \item Registro de usuarios: Permite a los usuarios registrarse en la aplicación, creando una cuenta con un nombre de usuario y una contraseña.
+%     \item Inicio de sesión y cierre de sesión: Permite a los usuarios iniciar sesión en la aplicación con su nombre de usuario y contraseña, y cerrar sesión cuando lo deseen.
+%     \item Cambios y recuperación de contraseñas: Permite a los usuarios cambiar su contraseña y recuperar su cuenta en caso de que la hayan olvidado.
+%     \item Gestión de permisos y grupos de usuarios: Permite asignar permisos y roles a los usuarios, de manera que se pueda controlar qué funcionalidades pueden utilizar y qué datos pueden ver. Esto es especialmente útil para aplicaciones que tienen distintos tipos de usuarios, como administradores, clientes o empleados.
+%     \item Control de acceso: Permite controlar el acceso a las distintas funcionalidades de la aplicación, de manera que solo los usuarios autorizados puedan acceder a ellas.
+% \end{itemize}
 
-\begin{itemize}
-    \item \textbf{Usuario [\texttt{auth\_user}]:} Esta tabla almacena la información de los usuarios. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único del usuario. \textit{Clave primaria (entero)}.
-              \item \texttt{username}: Nombre de usuario del usuario. \textit{Cadena de caracteres}.
-              \item \texttt{password}: Contraseña del usuario. \textit{Cadena de caracteres}.
-              \item \texttt{email}: Correo electrónico del usuario. \textit{Cadena de caracteres}.
-              \item \texttt{first\_name}: Nombre del usuario. \textit{Cadena de caracteres}.
-              \item \texttt{last\_name}: Apellido del usuario. \textit{Cadena de caracteres}.
-              \item \texttt{is\_active}: Indica si el usuario está activo o no. \textit{Booleano}.
-              \item \texttt{is\_staff}: Indica si el usuario es un miembro del personal o no. Esto permite que el usuario pueda acceder al panel de administración de Django. \textit{Booleano}.
-              \item \texttt{is\_superuser}: Indica si el usuario es un superusuario o no. Esto permite que el usuario tenga todos los permisos y pueda acceder a todas las funcionalidades de la aplicación. \textit{Booleano}.
-              \item \texttt{last\_login}: Fecha y hora del último inicio de sesión del usuario. Este campo es útil para saber cuándo fue la última vez que el usuario accedió a la aplicación. Si el usuario nunca ha iniciado sesión, este campo estará vacío. \textit{Fecha y hora}.
-              \item \texttt{date\_joined}: Fecha y hora en la que el usuario se registró en la aplicación. Este campo es útil para saber cuándo se creó la cuenta del usuario. \textit{Fecha y hora}.
-          \end{itemize}
-    \item \textbf{Grupo [\texttt{auth\_group}]:} Esta tabla almacena los grupos de usuarios. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único del grupo. \textit{Clave primaria (entero)}.
-              \item \texttt{name}: Nombre del grupo. \textit{Cadena de caracteres}.
-          \end{itemize}
-    \item \textbf{Permiso [\texttt{auth\_permission}]:} Esta tabla almacena los permisos que pueden ser asignados a los usuarios y grupos. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único del permiso. \textit{Clave primaria (entero)}.
-              \item \texttt{name}: Nombre del permiso. \textit{Cadena de caracteres}.
-              \item \texttt{codename}: Código del permiso. Este campo es único y se utiliza para identificar el permiso en la aplicación. \textit{Cadena de caracteres}.
-          \end{itemize}
-    \item \textbf{Permiso de grupo [\texttt{auth\_group\_permissions}]:} Esta tabla almacena la relación entre los grupos y los permisos que tienen asignados. Así pues, esta tabla relaciona las tablas \texttt{auth\_group} y \texttt{auth\_permission}. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
-              \item \texttt{group\_id}: Identificador del grupo al que pertenece el permiso. Este campo es una relación N:1 con la tabla \texttt{auth\_group}. \textit{Entero}.
-              \item \texttt{permission\_id}: Identificador del permiso asignado al grupo. Este campo es una relación N:1 con la tabla \texttt{auth\_permission}. \textit{Entero}.
-          \end{itemize}
-    \item \textbf{Permiso de usuario [\texttt{auth\_user\_user\_permissions}]:} Esta tabla almacena la relación entre los usuarios y los permisos que tienen asignados. Consecuentemente, la tabla actúa como tabla intermedia entre las tablas \texttt{auth\_user} y \texttt{auth\_permission}. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
-              \item \texttt{user\_id}: Identificador del usuario al que pertenece el permiso. Este campo es una relación N:1 con la tabla \texttt{auth\_user}. \textit{Entero}.
-              \item \texttt{permission\_id}: Identificador del permiso asignado al usuario. Este campo es una relación N:1 con la tabla \texttt{auth\_permission}. \textit{Entero}.
-          \end{itemize}
-    \item \textbf{Usuario de grupo [\texttt{auth\_user\_groups}]:} Esta tabla almacena la relación entre los usuarios y los grupos a los que pertenecen. De esta manera, actúa como tabla intermedia entre las tablas \texttt{auth\_user} y \texttt{auth\_group}. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
-              \item \texttt{user\_id}: Identificador del usuario al que pertenece el grupo. Este campo es una relación N:1 con la tabla \texttt{auth\_user}. \textit{Entero}.
-              \item \texttt{group\_id}: Identificador del grupo al que pertenece el usuario. Este campo es una relación N:1 con la tabla \texttt{auth\_group}. \textit{Entero}.
-          \end{itemize}
-    \item \textbf{Sesión [\texttt{django\_session}]:} Esta tabla almacena las sesiones de los usuarios. Los campos que contiene son los siguientes:
-          \begin{itemize}
-              \item \texttt{session\_key}: Clave única de la sesión. Este campo es único y se utiliza para identificar la sesión en la aplicación. \textit{Cadena de caracteres}.
-              \item \texttt{session\_data}: Datos de la sesión. Este campo almacena los datos de la sesión en formato JSON. \textit{Cadena de caracteres}.
-              \item \texttt{expire\_date}: Fecha de expiración de la sesión. Este campo indica cuándo caduca la sesión y se elimina automáticamente. \textit{Fecha y hora}.
-          \end{itemize}
-\end{itemize}
+% Con las funcionalidades definidas, se pueden estudiar las tablas que Django va a utilizar para almacenar toda la información que permita realizar estas funcionalidades. En concreto, el sistema de autenticación hace uso las siguientes tablas:
 
-Con las siete tablas definidas, es necesario explicar el funcionamiento de cada una de ellas y como se relacionan entre sí. En primer lugar, todo parte de la tabla de usuarios \texttt{auth\_user}, que almacena la información de estos, y de la tabla de permisos \texttt{auth\_permission}, que almacena los permisos que pueden ser asignados. A partir de aquí, existen dos maneras de asignar permisos a los usuarios:
+% \begin{itemize}
+%     \item \textbf{Usuario [\texttt{auth\_user}]:} Esta tabla almacena la información de los usuarios. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único del usuario. \textit{Clave primaria (entero)}.
+%               \item \texttt{username}: Nombre de usuario del usuario. \textit{Cadena de caracteres}.
+%               \item \texttt{password}: Contraseña del usuario. \textit{Cadena de caracteres}.
+%               \item \texttt{email}: Correo electrónico del usuario. \textit{Cadena de caracteres}.
+%               \item \texttt{first\_name}: Nombre del usuario. \textit{Cadena de caracteres}.
+%               \item \texttt{last\_name}: Apellido del usuario. \textit{Cadena de caracteres}.
+%               \item \texttt{is\_active}: Indica si el usuario está activo o no. \textit{Booleano}.
+%               \item \texttt{is\_staff}: Indica si el usuario es un miembro del personal o no. Esto permite que el usuario pueda acceder al panel de administración de Django. \textit{Booleano}.
+%               \item \texttt{is\_superuser}: Indica si el usuario es un superusuario o no. Esto permite que el usuario tenga todos los permisos y pueda acceder a todas las funcionalidades de la aplicación. \textit{Booleano}.
+%               \item \texttt{last\_login}: Fecha y hora del último inicio de sesión del usuario. Este campo es útil para saber cuándo fue la última vez que el usuario accedió a la aplicación. Si el usuario nunca ha iniciado sesión, este campo estará vacío. \textit{Fecha y hora}.
+%               \item \texttt{date\_joined}: Fecha y hora en la que el usuario se registró en la aplicación. Este campo es útil para saber cuándo se creó la cuenta del usuario. \textit{Fecha y hora}.
+%           \end{itemize}
+%     \item \textbf{Grupo [\texttt{auth\_group}]:} Esta tabla almacena los grupos de usuarios. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único del grupo. \textit{Clave primaria (entero)}.
+%               \item \texttt{name}: Nombre del grupo. \textit{Cadena de caracteres}.
+%           \end{itemize}
+%     \item \textbf{Permiso [\texttt{auth\_permission}]:} Esta tabla almacena los permisos que pueden ser asignados a los usuarios y grupos. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único del permiso. \textit{Clave primaria (entero)}.
+%               \item \texttt{name}: Nombre del permiso. \textit{Cadena de caracteres}.
+%               \item \texttt{codename}: Código del permiso. Este campo es único y se utiliza para identificar el permiso en la aplicación. \textit{Cadena de caracteres}.
+%           \end{itemize}
+%     \item \textbf{Permiso de grupo [\texttt{auth\_group\_permissions}]:} Esta tabla almacena la relación entre los grupos y los permisos que tienen asignados. Así pues, esta tabla relaciona las tablas \texttt{auth\_group} y \texttt{auth\_permission}. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
+%               \item \texttt{group\_id}: Identificador del grupo al que pertenece el permiso. Este campo es una relación N:1 con la tabla \texttt{auth\_group}. \textit{Entero}.
+%               \item \texttt{permission\_id}: Identificador del permiso asignado al grupo. Este campo es una relación N:1 con la tabla \texttt{auth\_permission}. \textit{Entero}.
+%           \end{itemize}
+%     \item \textbf{Permiso de usuario [\texttt{auth\_user\_user\_permissions}]:} Esta tabla almacena la relación entre los usuarios y los permisos que tienen asignados. Consecuentemente, la tabla actúa como tabla intermedia entre las tablas \texttt{auth\_user} y \texttt{auth\_permission}. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
+%               \item \texttt{user\_id}: Identificador del usuario al que pertenece el permiso. Este campo es una relación N:1 con la tabla \texttt{auth\_user}. \textit{Entero}.
+%               \item \texttt{permission\_id}: Identificador del permiso asignado al usuario. Este campo es una relación N:1 con la tabla \texttt{auth\_permission}. \textit{Entero}.
+%           \end{itemize}
+%     \item \textbf{Usuario de grupo [\texttt{auth\_user\_groups}]:} Esta tabla almacena la relación entre los usuarios y los grupos a los que pertenecen. De esta manera, actúa como tabla intermedia entre las tablas \texttt{auth\_user} y \texttt{auth\_group}. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{id}: Identificador único de la relación. \textit{Clave primaria (entero)}.
+%               \item \texttt{user\_id}: Identificador del usuario al que pertenece el grupo. Este campo es una relación N:1 con la tabla \texttt{auth\_user}. \textit{Entero}.
+%               \item \texttt{group\_id}: Identificador del grupo al que pertenece el usuario. Este campo es una relación N:1 con la tabla \texttt{auth\_group}. \textit{Entero}.
+%           \end{itemize}
+%     \item \textbf{Sesión [\texttt{django\_session}]:} Esta tabla almacena las sesiones de los usuarios. Los campos que contiene son los siguientes:
+%           \begin{itemize}
+%               \item \texttt{session\_key}: Clave única de la sesión. Este campo es único y se utiliza para identificar la sesión en la aplicación. \textit{Cadena de caracteres}.
+%               \item \texttt{session\_data}: Datos de la sesión. Este campo almacena los datos de la sesión en formato JSON. \textit{Cadena de caracteres}.
+%               \item \texttt{expire\_date}: Fecha de expiración de la sesión. Este campo indica cuándo caduca la sesión y se elimina automáticamente. \textit{Fecha y hora}.
+%           \end{itemize}
+% \end{itemize}
 
-\begin{itemize}
-    \item \textbf{Asignación directa:} Se pueden asignar permisos directamente a los usuarios, lo que significa que el usuario tendrá acceso a las funcionalidades y datos correspondientes a esos permisos. Este enfoque es útil para asignar permisos a usuarios individuales, lo que puede resultar necesario en algunos casos.
-    \item \textbf{Asignación a través de grupos:} Se pueden crear grupos de usuarios y asignarles permisos, lo que significa que todos los usuarios del grupo tendrán acceso a las funcionalidades y datos correspondientes a esos permisos. Este segundo enfoque es útil para asignar permisos a un grupo de usuarios, lo que puede resultar más eficiente y fácil de gestionar.
-\end{itemize}
+% Con las siete tablas definidas, es necesario explicar el funcionamiento de cada una de ellas y como se relacionan entre sí. En primer lugar, todo parte de la tabla de usuarios \texttt{auth\_user}, que almacena la información de estos, y de la tabla de permisos \texttt{auth\_permission}, que almacena los permisos que pueden ser asignados. A partir de aquí, existen dos maneras de asignar permisos a los usuarios:
 
-Para la asignación directa, se utiliza la tabla \texttt{auth\_user\_user\_permissions}, que relaciona los usuarios con los permisos que tienen asignados. De esta manera, la tabla relaciona las tablas \texttt{auth\_user} y \texttt{auth\_permission}. Cada permiso que se le asigna a un usuario representará una instancia de la tabla. Gracias a esta tabla, se pueden asignar permisos a los usuarios de manera individual, lo que permite un control más granular sobre los permisos de cada usuario.
+% \begin{itemize}
+%     \item \textbf{Asignación directa:} Se pueden asignar permisos directamente a los usuarios, lo que significa que el usuario tendrá acceso a las funcionalidades y datos correspondientes a esos permisos. Este enfoque es útil para asignar permisos a usuarios individuales, lo que puede resultar necesario en algunos casos.
+%     \item \textbf{Asignación a través de grupos:} Se pueden crear grupos de usuarios y asignarles permisos, lo que significa que todos los usuarios del grupo tendrán acceso a las funcionalidades y datos correspondientes a esos permisos. Este segundo enfoque es útil para asignar permisos a un grupo de usuarios, lo que puede resultar más eficiente y fácil de gestionar.
+% \end{itemize}
 
-Por otro lado, para la asignación a través de grupos, se utilizan las tablas \texttt{auth\_group} y \texttt{auth\_group\_permissions}. La primera almacena los grupos de usuarios y la segunda relaciona los grupos con los permisos que tienen asignados, mediante la relación entre las tablas \texttt{auth\_group} y \texttt{auth\_permission}. Cada permiso que se le asigna a un grupo representará una instancia de la tabla. De esta manera, se pueden crear grupos de usuarios y asignarles permisos, lo que permite un control más eficiente sobre los permisos de los usuarios, pues es mucho más óptimo asignar permisos a un grupo que asignar permisos usuario por usuario.
+% Para la asignación directa, se utiliza la tabla \texttt{auth\_user\_user\_permissions}, que relaciona los usuarios con los permisos que tienen asignados. De esta manera, la tabla relaciona las tablas \texttt{auth\_user} y \texttt{auth\_permission}. Cada permiso que se le asigna a un usuario representará una instancia de la tabla. Gracias a esta tabla, se pueden asignar permisos a los usuarios de manera individual, lo que permite un control más granular sobre los permisos de cada usuario.
 
-No obstante, para asignar los usuarios a los grupos, se utiliza la tabla \texttt{auth\_user\_groups}, que relaciona los usuarios con los grupos a los que pertenecen mediante la relación entre las tablas \texttt{auth\_user} y \texttt{auth\_group}. De esta manera, se pueden asignar usuarios a grupos y, por tanto, asignarles los permisos correspondientes a esos grupos.
+% Por otro lado, para la asignación a través de grupos, se utilizan las tablas \texttt{auth\_group} y \texttt{auth\_group\_permissions}. La primera almacena los grupos de usuarios y la segunda relaciona los grupos con los permisos que tienen asignados, mediante la relación entre las tablas \texttt{auth\_group} y \texttt{auth\_permission}. Cada permiso que se le asigna a un grupo representará una instancia de la tabla. De esta manera, se pueden crear grupos de usuarios y asignarles permisos, lo que permite un control más eficiente sobre los permisos de los usuarios, pues es mucho más óptimo asignar permisos a un grupo que asignar permisos usuario por usuario.
 
-Por último, es importante mencionar como se guarda la contraseña de los usuarios en la base de datos. Idealmente, cualquier persona que pueda llegar a tener acceso a la base de datos, ya sea un desarrollador, un administrador o un atacante, no debería poder acceder a las contraseñas de los usuarios. Por este motivo, las contraseñas no se guardan en texto plano, sino que se almacenan de manera segura utilizando un algoritmo de encriptación. La encriptación de contraseñas es una de aquellas prácticas donde uno no deber reinventar la rueda, ya que existen múltiples algoritmos de encriptación seguros y probados. En este caso, Django utiliza el algoritmo PBKDF2 para realizar la encriptación, guardando la contraseña en el formato siguiente:
+% No obstante, para asignar los usuarios a los grupos, se utiliza la tabla \texttt{auth\_user\_groups}, que relaciona los usuarios con los grupos a los que pertenecen mediante la relación entre las tablas \texttt{auth\_user} y \texttt{auth\_group}. De esta manera, se pueden asignar usuarios a grupos y, por tanto, asignarles los permisos correspondientes a esos grupos.
 
-\begin{center}
-    \texttt{<algoritmo>\$<número de iteraciones>\$<salto>\$<hash>}
-\end{center}
+% Por último, es importante mencionar como se guarda la contraseña de los usuarios en la base de datos. Idealmente, cualquier persona que pueda llegar a tener acceso a la base de datos, ya sea un desarrollador, un administrador o un atacante, no debería poder acceder a las contraseñas de los usuarios. Por este motivo, las contraseñas no se guardan en texto plano, sino que se almacenan de manera segura utilizando un algoritmo de encriptación. La encriptación de contraseñas es una de aquellas prácticas donde uno no deber reinventar la rueda, ya que existen múltiples algoritmos de encriptación seguros y probados. En este caso, Django utiliza el algoritmo PBKDF2 para realizar la encriptación, guardando la contraseña en el formato siguiente:
+
+% \begin{center}
+%     \texttt{<algoritmo>\$<número de iteraciones>\$<salto>\$<hash>}
+% \end{center}
 
 
 
-\begin{figure}
+\begin{figure} [H]
     \centering
     \includegraphics[width=0.98\textwidth]{figures/design_develop/database_diagram.pdf}
     \caption{Diagrama de la base de datos}
