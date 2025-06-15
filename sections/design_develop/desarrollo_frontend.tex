@@ -56,7 +56,7 @@ Antes de comenzar con el desarrollo de las vistas, es fundamental tener claro c�
 
 El desarrollo de estas funcionalidades debe enfocarse en ofrecer una experiencia de usuario ágil e intuitiva, permitiendo una gestión eficiente de los canales de venta. El objetivo es que la plataforma se convierta en una herramienta imprescindible para la administración diaria de los distintos \textit{marketplaces} y que el usuario no pierda tiempo en tareas repetitivas o tediosas.
 
-Es importante señalar que los usuarios de la plataforma no disponen de permisos para crear ni editar canales de venta. La incorporación de un nuevo canal es una tarea gestionada exclusivamente por la plataforma, ya que implica un análisis previo, así como la implementación y configuración de la API correspondiente, entre otros aspectos técnicos. El usuario final puede asignar productos a los canales ya disponibles, pero no tiene control sobre su creación o configuración.
+Es importante señalar que los usuarios de la plataforma no disponen de permisos para crear ni editar canales de venta. La incorporación de un nuevo canal es una tarea gestionada exclusivamente por la plataforma, ya que implica un análisis previo, así como la implementación y configuración de la \gls{api} correspondiente, entre otros aspectos técnicos. El usuario final puede asignar productos a los canales ya disponibles, pero no tiene control sobre su creación o configuración.
 
 Teniendo en cuenta las funcionalidades definidas, la plataforma debe contar con dos vistas principales: una para la gestión de pedidos y otra para la gestión de productos. Como añadido a estas vistas, se ha incluido una vista de inicio que proporciona una visión general de la plataforma y permite observar datos generales del estado de los pedidos y productos.
 
@@ -114,7 +114,7 @@ Tal como se muestra en la figura \ref{fig:dev:ss:campos_editables_pedido}, los �
     \item \textbf{Estado del pedido:} El usuario puede cambiar el estado del pedido a uno de los estados disponibles en el desplegable. Esto es útil para indicar que el pedido ha sido preparado, enviado o entregado, entre otros.
     \item \textbf{Transportista}: El usuario puede seleccionar el transportista que se debe encargar de enviar el pedido. Esto es útil para llevar un control de los envíos y poder realizar un seguimiento del pedido.
     \item \textbf{Notas del pedido:} El usuario puede añadir notas al pedido para registrar información adicional relevante. Estas notas pueden ser útiles para el seguimiento del pedido o para registrar información adicional que no se encuentra en los campos del pedido.
-    \item \textbf{Dirección de facturación y envío:} El usuario tiene la posibilidad de editar la dirección de facturación y de envío asociadas al pedido. Esta funcionalidad resulta especialmente útil, ya que dichos datos son utilizados por la API del transportista para calcular el coste del envío y generar la etiqueta correspondiente. Sin embargo, si el formato de la dirección no es correcto, la API puede devolver un error, lo que impediría completar el envío del pedido.
+    \item \textbf{Dirección de facturación y envío:} El usuario tiene la posibilidad de editar la dirección de facturación y de envío asociadas al pedido. Esta funcionalidad resulta especialmente útil, ya que dichos datos son utilizados por la \gls{api} del transportista para calcular el coste del envío y generar la etiqueta correspondiente. Sin embargo, si el formato de la dirección no es correcto, la \gls{api} puede devolver un error, lo que impediría completar el envío del pedido.
 \end{itemize}
 
 \begin{figure}[H]
@@ -144,7 +144,7 @@ Por otro lado, en pedidos creados manualmente, se pueden añadir o quitar artíc
     \label{fig:dev:ss:modal_edicion_productos_pedido}
 \end{figure}
 
-Este modal incluye características bastante complejas, como es la búsqueda de productos dinámicamente. A medida que el usuario escribe en el campo de búsqueda el nombre o SKU del producto, se realiza una petición al \textit{backend} para obtener los productos que coincidan con la información introducida. Solo los productos que se encuentran en el canal de venta del pedido se mostrarán en la lista de resultados, lo que asegura que solo se puedan añadir productos válidos al pedido. Además, para evitar que se hagan demasiadas peticiones al \textit{backend}, se ha implementado un \textit{debounce} de 500 milisegundos, lo que significa que la búsqueda solo se realizará si el usuario deja de escribir durante ese tiempo, funcionalidad que se puede ver en la figura \ref{fig:dev:ss:busqueda_debounced}. Esto reduce la carga en el servidor y mejora la experiencia del usuario al evitar peticiones innecesarias.
+Este modal incluye características bastante complejas, como es la búsqueda de productos dinámicamente. A medida que el usuario escribe en el campo de búsqueda el nombre o \gls{sku} del producto, se realiza una petición al \textit{backend} para obtener los productos que coincidan con la información introducida. Solo los productos que se encuentran en el canal de venta del pedido se mostrarán en la lista de resultados, lo que asegura que solo se puedan añadir productos válidos al pedido. Además, para evitar que se hagan demasiadas peticiones al \textit{backend}, se ha implementado un \textit{debounce} de 500 milisegundos, lo que significa que la búsqueda solo se realizará si el usuario deja de escribir durante ese tiempo, funcionalidad que se puede ver en la figura \ref{fig:dev:ss:busqueda_debounced}. Esto reduce la carga en el servidor y mejora la experiencia del usuario al evitar peticiones innecesarias.
 
 \begin{figure}[H]
     \centering
@@ -166,7 +166,7 @@ Este modal incluye características bastante complejas, como es la búsqueda de 
 
 Cuando el usuario ha añadido, eliminado o editado los artículos del pedido, puede pulsar el icono de guardado para almacenar los cambios realizados. Esto enviará una petición al \textit{backend} con los nuevos productos y cantidades. Aquí es donde se hace uso de las características de acciones masivas explicadas en la sección \ref{dev:subsubsec:actualizacion_creacion_eliminacion_masiva}.
 
-Finalmente, para cargar la vista detallada de un pedido se realizan dos peticiones al \textit{backend}: una para obtener el pedido concreto y otra para obtener los canales de venta disponibles. Todos los componentes que componen la vista se encuentran sitaudos en la carpeta \texttt{src/components/orders/detail} y son llamados desde \texttt{src/routes/orders/$\langle id \rangle$.tsx}, que es el encargado de definir la ruta.
+Finalmente, para cargar la vista detallada de un pedido se realizan dos peticiones al \textit{backend}: una para obtener el pedido concreto y otra para obtener los canales de venta disponibles. Todos los componentes que componen la vista se encuentran sitaudos en la carpeta \texttt{src/components/orders/detail} y son llamados desde \texttt{src/routes/orders/\$orderId.tsx}, que es el encargado de definir la ruta.
 
 La última de las vistas de pedidos es la vista de creación manual de pedido. Para acceder a ella, el usuario debe estar en la vista de productos y pulsar el ícono "$+$", situado a la izquierda de la barra de búsqueda.
 
@@ -211,7 +211,7 @@ Crear un pedido manualmente es una tarea considerablemente tediosa, ya que hay q
               \label{fig:dev:ss:creacion_pedido_2_bloqueados}
           \end{figure}
     \item \textbf{Información de productos:} \\
-          Por último, en el tercer paso se deben añadir los artículos que componen el pedido. Para ello, se puede buscar un producto concreto mediante su nombre o SKU, y añadirlo al pedido con la cantidad y el precio correspondientes. Al igual que en la vista detallada de pedidos y en la búsqueda de clientes, en la búsqueda de productos también se ha implementado un \textit{debounce} para evitar hacer demasiadas peticiones al \textit{backend} y una mejor experiencia de usuario. El precio total del pedido se calcula automáticamente en función de los productos añadidos y sus cantidades, además de que el impuesto aplicable se calcula automáticamente en función del canal de venta seleccionado.
+          Por último, en el tercer paso se deben añadir los artículos que componen el pedido. Para ello, se puede buscar un producto concreto mediante su nombre o \gls{sku}, y añadirlo al pedido con la cantidad y el precio correspondientes. Al igual que en la vista detallada de pedidos y en la búsqueda de clientes, en la búsqueda de productos también se ha implementado un \textit{debounce} para evitar hacer demasiadas peticiones al \textit{backend} y una mejor experiencia de usuario. El precio total del pedido se calcula automáticamente en función de los productos añadidos y sus cantidades, además de que el impuesto aplicable se calcula automáticamente en función del canal de venta seleccionado.
           \begin{figure}[H]
               \centering
               \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/creacion_pedido_3.png}
@@ -251,11 +251,52 @@ Si algún campo es incorrecto o no se ha completado, la tarjeta mostrará un err
 
 La vista de productos es otra de las vistas principales de la plataforma, ya que permite gestionar todos los productos disponibles en los distintos canales de venta. En este caso, la vista se ha dividido en dos partes:
 \begin{itemize}
-    \item \textbf{Vista general de productos}: Esta vista permite al usuario ver todos los productos disponibles en la plataforma, independientemente del canal de venta al que pertenezcan. Se pueden filtrar los productos por el canal de venta, además de poder buscarlos por su nombre o SKU.
+    \item \textbf{Vista general de productos}: Esta vista permite al usuario ver todos los productos disponibles en la plataforma, independientemente del canal de venta al que pertenezcan. Se pueden filtrar los productos por el canal de venta, además de poder buscarlos por su nombre o \gls{sku}.
     \item \textbf{Vista detallada de producto}: Esta vista permite al usuario ver un producto concreto, así como editarlo. Se pueden ver todos los detalles del producto, incluyendo su nombre, descripción, precio y otros atributos. También se pueden editar los atributos del producto para cada uno de los canales de venta disponibles, lo que permite personalizar el producto según las necesidades de cada canal.
 \end{itemize}
 
-\textcolor{red}{\textbf{Por completar ya que falta desarrollar una funcionalidad}}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/tabla_productos.png}
+    \caption{Vista general de productos con algunos productos de ejemplo.}
+    \label{fig:dev:ss:vista_general_productos}
+\end{figure}
+
+Empezando con la vista general de productos, esta es la que se muestra en la figura \ref{fig:dev:ss:vista_general_productos}. Esta vista está basada en la vista general de pedidos, ya que está compuesta por una única tabla que muestra los productos disponibles en la plataforma. En esta tabla se muestra el \gls{sku} del producto, el nombre y los \textit{marketplaces} en los que está disponible. Cuenta también con un campo de búsqueda que permite filtrar los productos por su nombre o \gls{sku}, y un filtro por canal de venta que permite ver únicamente los productos de los canales seleccionados.
+
+Al igual que en la vista de pedidos, la tabla cuenta con paginación, de manera que por defecto se muestran 10 productos. No obstante, el usuario puede cambiar el número de productos por página a 25, 50 o 100. El funcionamiento es exactamente el mismo que en la vista de pedidos, es decir, cada vez que se cambia de página, se realiza una petición al \textit{backend} para obtener los productos correspondientes a la página, búsqueda o filtros seleccionados.
+
+El filtro de canal de venta tiene una particularidad: permite filtrar productos que no están asignados a ningún canal de venta. Esto es útil para identificar productos que aún no se han asignado a ningún canal y que, por lo tanto, no están disponibles para la venta. Para ello, se ha añadido una opción en el filtro que permite seleccionar ``\textit{None}'', lo cual mostrará únicamente los productos que no están asignados a ningún canal.
+
+Por otro lado, para manejar las variantes de un producto, se ha implementado un sistema de agrupación. Esto significa que, si un producto tiene variantes (por ejemplo, diferentes tallas o colores), todas las variantes se agrupan bajo la misma fila de la tabla. Desplegando la fila, se pueden ver todas las variantes del producto y sus respectivos canales de venta. Este comportamiento se puede observar en la figura \ref{fig:dev:ss:variantes_productos}, donde se muestra un producto con dos variantes agrupadas. Remarcar que los canales que se muestran en el producto padre son los canales en los que están sus variantes, y no los canales en los que está el producto padre; el producto padre es una abstracción que se utiliza para agrupar las variantes de un producto y no tiene un canal de venta asociado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/variantes_producto.png}
+    \caption{Agrupación de variantes de un producto en la vista general de productos.}
+    \label{fig:dev:ss:variantes_productos}
+\end{figure}
+
+Finalmente, para cargar la vista se realizan dos peticiones al \textit{backend}: una para obtener los productos y otra para obtener los canales de venta disponibles. Todos los componentes que componen la vista se encuentran en la carpeta \texttt{src/components/products/products-list} y son llamados desde el archivo \texttt{src/routes/products/index.tsx}, que es el encargado de definir la ruta.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/design_develop/screenshots/detalle_producto.png}
+    \caption{Vista detallada de un producto concreto.}
+    \label{fig:dev:ss:vista_detallada_productos}
+\end{figure}
+
+Pulsando sobre un producto concreto de la tabla, se accede a su vista detallada, que se muestra en la figura \ref{fig:dev:ss:vista_detallada_productos}. En esta vista se pueden ver dos secciones principales: la información general del producto y la información del producto en cada canal de venta.
+
+La primera sección muestra la información general del producto, incluyendo sus atributos genéricos, como el nombre, el \gls{sku} y el precio, y sus atributos asignables, como las descripciones, las imágenes, entre otros. Este componente está preparado para que, si se crean nuevos tipos de atributo desde el \textit{backend}, se añadan automáticamente sus campos correspondientes.
+
+Como característica destacable de esta primera sección, se incluye un carrusel de imágenes que permite al usuario visualizar todas las imágenes asociadas al producto. Este carrusel funciona detectando automáticamente todos los atributos cuyo \textit{key} sea \texttt{image} y mostrando su valor correspondiente, es decir, cada una de las imágenes del producto.
+
+Por otro lado, la segunda sección muestra la información del producto en cada canal de venta. El componente tiene tantas pestañas como canales de venta existan, de manera que el usuario puede navegar entre ellas para ver la información del producto en cada canal. En cada pestaña se muestran los atributos del producto en ese canal, permitiendo al usuario editar los valores de los atributos específicos de cada canal. Esto es útil para personalizar el producto según las necesidades de cada \textit{marketplace}, pues cada uno de ellos puede tener diferentes requisitos o características. Además, desde cada pestaña se puede habilitar o deshabilitar el producto en ese canal de venta, lo que permite al usuario controlar la disponibilidad del producto dependiendo del \textit{marketplace}.
+
+Para guardar los cambios realizados, tanto de atributos de producto como de atributos de producto de canal de venta, el usuario debe pulsar el icono de guardado que se encuentra en la parte superior derecha de cada sección. Esto enviará una petición al \textit{backend} con los nuevos valores de los atributos del producto.
+
+Por último, para cargar la vista detallada de un producto se realizan dos peticiones al \textit{backend}: una para obtener el producto, con todos sus atributos, y otra para obtener los canales de venta disponibles. Todos los componentes que componen la vista se encuentran en la carpeta \texttt{src/components/products/products-detail} y son llamados desde el archivo \texttt{src/routes/products/\$productId.tsx}, que es el encargado de definir la ruta.
 
 \subsubsection{Vista de inicio}
 \label{dev:subsubsec:vista_inicio}
@@ -268,7 +309,7 @@ La vista de inicio es la última de las vistas principales de la plataforma y pr
     \label{fig:dev:ss:vista_inicio}
 \end{figure}
 
-El \textit{dashboard} ha sido diseñado para mostrar de un vistazo el rendimiento de los distintos canales de venta. Para transmitir esta información de forma clara y visual, se ha optado por el uso de gráficos, lo cual ha requerido una evaluación previa de distintas librerías. En este análisis se han tenido en cuenta factores como la facilidad de uso, la escalabilidad y la capacidad de personalización. Finalmente, se ha elegido la librería Recharts, que destaca por su integración con React y TypeScript, su flexibilidad y su facilidad de implementación.
+El \textit{dashboard} ha sido diseñado para mostrar de un vistazo el rendimiento de los distintos canales de venta. Para transmitir esta información de forma clara y visual, se ha optado por el uso de gráficos, lo cual ha requerido una evaluación previa de distintas librerías. En este análisis se han tenido en cuenta factores como la facilidad de uso, la escalabilidad y la capacidad de personalización. Finalmente, se ha elegido la librería Recharts, que destaca por su integración con React y TypeScript, su flexibilidad y su facilidad de implementación. Recharts permite crear gráficos de barras, de líneas, circulares, entre otros, y ofrece una amplia variedad de opciones de personalización para adaptarlos a las necesidades específicas.
 
 Con la librería para implementar gráficos definida, se ha dividido la vista en cuatro secciones principales, que corresponden a cuatro componentes:
 
@@ -282,6 +323,8 @@ Con la librería para implementar gráficos definida, se ha dividido la vista en
     \item \textbf{Ingresos por canal a lo largo del tiempo:} \\
           Este componente muestra un gráfico de líneas que representa los ingresos generados por cada canal de venta o en total a lo largo del tiempo. Esto permite al usuario ver la evolución de los ingresos y detectar tendencias o patrones en el comportamiento de los canales de venta. Al igual que en el componente anterior, se ha añadido un filtro por fecha que permite al usuario seleccionar el rango de fechas para el que se quieren ver los ingresos. También se ha añadido un filtro por canal de venta que permite al usuario seleccionar qué canales de venta quiere ver en el gráfico. Por defecto, se muestra el rango de fechas correspondiente al año actual y el total de ingresos de todos los canales de venta.
 \end{enumerate}
+
+Para cargar la vista de inicio se realizan cinco peticiones al \textit{backend}: una petición para cada uno de los cuatro componentes y una petición para obtener los canales de venta disponibles. Además, por cada actualización de los filtros de fecha o canal de venta, se realiza una nueva petición al \textit{backend} para obtener los datos actualizados. Por otro lado, todos los componentes que forman la vista se encuentran en la carpeta \texttt{src/components/dashboard} y son llamados desde el archivo \texttt{src/routes/index.tsx}, que es el encargado de definir la ruta.
 
 \begin{figure}[H]
     \centering
@@ -312,6 +355,5 @@ Con la librería para implementar gráficos definida, se ha dividido la vista en
     \caption{Secciones de la vista de inicio.}
     \label{fig:dev:ss:vista_inicio_secciones}
 \end{figure}
-
 
 Todo este conjunto de gráficos y datos representa una primera iteración de lo que en un futuro se pretende que sea un panel de control más completo y detallado. La idea es que, a medida que la plataforma evolucione, se puedan añadir más gráficos y datos relevantes para el usuario, de manera que este tenga acceso a un conjunto de herramientas que le permitan analizar como están funcionando los distintos canales de venta y tomar decisiones informadas.

@@ -1,88 +1,88 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.0.3">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="27.1.4">
   <diagram name="Page-1" id="dV4gOR_IBtZmmg_PkJwF">
     <mxGraphModel dx="1426" dy="758" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-34" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-34" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="850" y="65" width="117" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-1" target="eNmQSLAEF3XVMnD1VQyt-2">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-1" target="eNmQSLAEF3XVMnD1VQyt-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-1" value="Usuario crea 1&lt;div&gt;producto&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-1" value="Usuario crea el &lt;b&gt;producto&lt;/b&gt;&lt;div&gt;&lt;i&gt;&quot;Pantalones&quot;&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="90" y="160" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-2" target="eNmQSLAEF3XVMnD1VQyt-5">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-2" target="eNmQSLAEF3XVMnD1VQyt-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-2" target="eNmQSLAEF3XVMnD1VQyt-13">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-2" target="eNmQSLAEF3XVMnD1VQyt-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-2" value="Se añade una fila en la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;product&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-2" value="Se añade 1 fila en la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;product&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="240" y="160" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-3" target="eNmQSLAEF3XVMnD1VQyt-4">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-3" target="eNmQSLAEF3XVMnD1VQyt-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-3" value="Desarrollador crea 5 tipos de atributo de producto" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-3" value="Desarrollador crea el &lt;b&gt;tipo de producto&lt;/b&gt;&lt;div&gt;&lt;i&gt;&quot;Talla&quot;&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="240" y="60" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-4" target="eNmQSLAEF3XVMnD1VQyt-5">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-27" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-4" target="eNmQSLAEF3XVMnD1VQyt-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-4" value="Se añaden 5 entradas a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;productattributetype&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-4" value="Se añade 1 fila a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;productattributetype&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="395" y="60" width="165" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-5" target="eNmQSLAEF3XVMnD1VQyt-6">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-5" target="eNmQSLAEF3XVMnD1VQyt-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-5" value="Usuario asigna 5 atributos de producto al producto con los 5 tipos de atributo de producto disponibles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-5" value="Usuario asigna al &lt;b&gt;producto &lt;/b&gt;el&lt;b&gt; atributo&lt;/b&gt;&lt;div&gt;&lt;i&gt;&quot;M&quot;&lt;/i&gt; al &lt;b&gt;tipo de atributo &lt;/b&gt;&lt;i&gt;&quot;Talla&quot;&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="412.5" y="155" width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-6" value="Se añaden 5 entradas a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;productatrribute&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-6" value="Se añaden 1 fila a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;productatrribute&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="600" y="160" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-13" target="eNmQSLAEF3XVMnD1VQyt-14">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-13" target="eNmQSLAEF3XVMnD1VQyt-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-13" value="Usuario asigna el producto a 1 canal de venta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-13" value="Usuario asigna el &lt;b&gt;producto&lt;/b&gt; &lt;i&gt;&quot;Pantalones&quot;&amp;nbsp;&lt;/i&gt;&lt;div&gt;al &lt;b&gt;canal de venta&lt;/b&gt;&amp;nbsp;&lt;i&gt;&quot;Amazon&quot;&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="235" y="255" width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-14" target="eNmQSLAEF3XVMnD1VQyt-15">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-14" target="eNmQSLAEF3XVMnD1VQyt-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-14" value="Se añade 1 fila en la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproduct&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-14" value="Se añade 1 fila en la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproduct&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="406.25" y="260" width="142.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-15" target="eNmQSLAEF3XVMnD1VQyt-22">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-15" target="eNmQSLAEF3XVMnD1VQyt-22" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-15" value="Usuario asigna 3 atributos de producto de canal de venta al producto del canal de venta con los 3 tipos de atributos de producto de canal de venta disponibles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-15" value="Usuario asigna al &lt;b&gt;producto de canal de venta &lt;/b&gt;el &lt;b&gt;atributo de producto de canal de venta&lt;/b&gt;&amp;nbsp;&lt;i&gt;&quot;48&quot;&lt;/i&gt;&amp;nbsp;al &lt;b&gt;tipo de atributo del producto de canal de venta &lt;/b&gt;&lt;i&gt;&quot;Talla&quot;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="582.5" y="242.5" width="165" height="95" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-18" target="eNmQSLAEF3XVMnD1VQyt-19">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-18" target="eNmQSLAEF3XVMnD1VQyt-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-18" value="Desarrollador crea 3 tipos de atributo de producto de canal de venta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-18" value="Desarrollador crea el &lt;b&gt;tipo de atributo del producto de canal de venta&lt;/b&gt; &lt;i&gt;&quot;Talla&quot;&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="417.5" y="360" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="eNmQSLAEF3XVMnD1VQyt-19" target="eNmQSLAEF3XVMnD1VQyt-15">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="eNmQSLAEF3XVMnD1VQyt-19" target="eNmQSLAEF3XVMnD1VQyt-15" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-19" value="Se añaden 3 entradas a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproductattributetype&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-19" value="Se añaden 1 fila a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproductattributetype&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="551.25" y="360" width="227.5" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-22" value="Se añaden 3 entradas a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproductatrribute&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-22" value="Se añaden 1 entrada a la tabla &lt;font data-font-src=&quot;https://fonts.googleapis.com/css?family=Cascadia+Code&quot; face=&quot;Cascadia Code&quot;&gt;marketplaceproductatrribute&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="778.75" y="255" width="200" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-31" value="Acción del desarrollador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-31" value="Acción del desarrollador" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="861.75" y="75" width="91" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-32" value="Acción de la base de datos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-32" value="Acción de la base de datos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="860" y="180" width="94.5" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="eNmQSLAEF3XVMnD1VQyt-33" value="Acción del usuario" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+        <mxCell id="eNmQSLAEF3XVMnD1VQyt-33" value="Acción del usuario" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="861.5" y="125" width="91" height="40" as="geometry" />
         </mxCell>
       </root>

@@ -8,7 +8,7 @@ En concreto, para el proyecto se ha decidido hacer uso del sistema de gestión d
 \subsection{Bloques de funcionalidades}
 \label{dev:subsec:bloques_funcionalidades}
 
-Antes de empezar a diseñar la base de datos, se deben definir los bloques clave de la aplicación para así poder estructurar los datos de manera que se puedan implementar de la mejor manera posible. Estos bloques van a tener gran relevancia a lo largo del desarrollo, ya que van a definir como se estructura todo: tanto el \textit{backend} como el \textit{frontend}. Consecuentemente, los bloques de funcionalidades que se han definido son los siguientes:
+Antes de empezar a diseñar la base de datos, se deben definir los bloques clave de la aplicación para así poder estructurar los datos para que se puedan implementar de la mejor manera posible. Estos bloques van a tener gran relevancia a lo largo del desarrollo, ya que van a definir como se estructura todo: tanto el \textit{backend} como el \textit{frontend}. Consecuentemente, los bloques de funcionalidades que se han definido son los siguientes:
 
 \begin{itemize}
     \item \textbf{Bloque de canales:} La herramienta debe permitir la gestión de los distintos canales de venta en línea. Aunque el usuario no crea ni edita de manera directa los canales de venta, interactúa con ellos, de manera que su información debe estar almacenada en la base de datos.
@@ -17,7 +17,7 @@ Antes de empezar a diseñar la base de datos, se deben definir los bloques clave
           % \item \textbf{Bloque de usuarios y autenticación:} La herramienta debe permitir la gestión de los usuarios que pueden acceder a la aplicación. Esto incluye la posibilidad de crear, editar y eliminar usuarios, así como la de asignarles distintos permisos y roles dentro de la aplicación.
 \end{itemize}
 
-Con los bloques clave definidos, se puede concluir que la base de datos debe contener cuatro tablas principales: una para los pedidos, otra para los productos y una última para los canales. A partir de aquí, se pueden definir las distintas tablas que van a complementar las principales.
+Con los bloques clave definidos, se puede concluir que la base de datos debe contener tres tablas principales: una para los pedidos, otra para los productos y una última para los canales. A partir de aquí, se pueden definir las distintas tablas que van a complementar las principales.
 
 Adicionalmente, dado que para este proyecto la aplicación se presenta como una fase inicial de una desarrollo mucho más grande, que en un futuro podría convertirse en una solución comercializable, es indispensable tener en cuenta la escalabilidad de toda la aplicación. Por este motivo, los tres bloques que a continuación se detallarán han sido diseñados de manera que se puedan ampliar en un futuro sin necesidad de realizar cambios significativos en la base de datos.
 
@@ -34,16 +34,17 @@ Este bloque está formado únicamente por una tabla, que es la siguiente:
               \item \texttt{id}: Identificador único del canal de venta. \textit{Clave primaria (entero)}.
               \item \texttt{name}: Nombre del canal de venta. \textit{Cadena de caracteres}.
               \item \texttt{logo\_url}: URL del logo del canal de venta. \textit{Cadena de caracteres}.
-              \item \texttt{color}: Color del canal de venta. \textit{Cadena de caracteres}.
+              \item \texttt{color}: Color del canal de venta (se usa en el \textit{frontend}). \textit{Cadena de caracteres}.
               \item \texttt{country}: País del canal de venta. \textit{Entero}.
+              \item \texttt{tex}: Impuesto aplicable en el canal de venta. \textit{Decimal}.
           \end{itemize}
 \end{itemize}
 
-Con la tabla definida, se puede describir el funcionamiento del bloque. El desarrollador de la aplicación puede añadir nuevos canales de venta añadiendo nuevas filas a la tabla. Este enfoque permite que nuevos canales de venta puedan ser añadidos sin necesidad de hacer grandes cambios en la aplicación, pues cada canal de venta es tratado como una entidad independiente. Al añadir un nuevo canal de venta el usuario verá el nuevo canal en la aplicación tal como si fuera uno ya existente, pudiendo sincronizar sus pedidos y productos con él.
+El desarrollador de la aplicación puede añadir nuevos canales de venta añadiendo nuevas filas a la tabla. Este enfoque permite que nuevos canales de venta puedan ser añadidos sin necesidad de hacer grandes cambios en la aplicación, pues cada canal de venta es tratado como una entidad independiente. Al añadir un nuevo canal de venta el usuario verá el nuevo canal en la aplicación tal como si fuera uno ya existente, pudiendo sincronizar sus pedidos y productos con él.
 
 \subsubsection{Bloque de pedidos}
 
-El bloque de pedidos es el conjunto de tablas y relaciones que almacenan toda la información correspondiente a los pedidos. En cada pedido es importante almacenar la información de éste, como el estado, la fecha, el método de pago, el canal de venta, entre otros. Además, para saber donde se debe enviar el pedido, es importante almacenar la información del cliente, como su nombre, dirección y teléfono. Por último, también es importante almacenar la información de los productos que componen el pedido, como su nombre, precio y cantidad solicitada.
+El bloque de pedidos es el conjunto de tablas y relaciones que almacenan toda la información correspondiente a los pedidos. En cada pedido es importante almacenar la información de éste, como el estado, la fecha, el método de pago, el canal de venta, entre otros. Además, para saber donde se debe enviar el pedido, es importante almacenar la información del cliente, como su nombre, dirección y teléfono. Por último, también es importante almacenar la información de los productos que componen el pedido, como su nombre, precio y cantidad adquirida.
 
 Conociendo la información que se debe almacenar, se pueden definir las siguientes tablas:
 
@@ -87,7 +88,7 @@ Conociendo la información que se debe almacenar, se pueden definir las siguient
               \item \texttt{ship\_address}: Dirección de envío. \textit{Cadena de caracteres}.
               \item \texttt{ship\_city}: Ciudad de envío. \textit{Cadena de caracteres}.
               \item \texttt{ship\_zipcode}: Código postal de envío. \textit{Cadena de caracteres}.
-              \item \texttt{ship\_country}: País de envío. \textit{Entero pequeño}.
+              \item \texttt{ship\_country}: País de envío. \textit{Entero}.
           \end{itemize}
     \item \textbf{Artículo [\texttt{orderitem}]:} Esta tabla almacena la información de los productos que componen el pedido. Los campos que contiene son los siguientes:
           \begin{itemize}
@@ -104,19 +105,19 @@ Conociendo la información que se debe almacenar, se pueden definir las siguient
           \end{itemize}
 \end{itemize}
 
-Con esto, se puede observar que el bloque está formado por una tabla principal, la de pedidos \texttt{order}, que almacena la información general de cada pedido, y tres tablas complementarias: la de clientes \texttt{customer}, que almacena la información del cliente, la de artículos \texttt{orderitem}, que almacena la información de los productos que componen el pedido, y la de transportistas \texttt{carrier}, que almacena la información de los transportistas.
+Se puede observar que el bloque está formado por una tabla principal, la de pedidos (\texttt{order}), que almacena la información general de cada pedido, y tres tablas complementarias: la de clientes (\texttt{customer}), que almacena la información del cliente, la de artículos (\texttt{orderitem}), que almacena la información de los productos que componen el pedido, y la de transportistas (\texttt{carrier}), que almacena la información de los transportistas.
 
-Si bien es cierto que la tabla de cliente podría parecer ser redundante, pues toda la información del cliente \texttt{customer} podría almacenarse directamente en la tabla de pedidos, se ha optado por crear una tabla independiente para poder reutilizar la información del cliente en otros pedidos. De esta manera, si un cliente realiza varios pedidos, su información solo se almacena una vez, lo que permite reducir el espacio de almacenamiento y mejorar la eficiencia de la base de datos, además de permitir hacer filtros, búsquedas y análisis de datos más eficientes; opciones que podrían ser muy útiles en un futuro si se quiere implementar una funcionalidad de análisis de datos.
+Si bien es cierto que la tabla de cliente podría parecer ser redundante, pues toda la información del cliente podría almacenarse directamente en la tabla de pedidos, se ha optado por crear una tabla independiente para poder reutilizar la información del cliente en otros pedidos. De esta manera, si un cliente realiza varios pedidos, su información solo se almacena una vez, lo que permite reducir el espacio de almacenamiento y mejorar la eficiencia de la base de datos, además de permitir hacer filtros, búsquedas y análisis de datos más eficientes; opciones que podrían ser muy útiles en un futuro para implementar una funcionalidad de análisis de datos.
 
-Por otro lado, la tabla de artículos \texttt{orderitem} no almacena la información del producto, sino que relaciona el pedido con el producto del canal de venta. Esta práctica permite, al igual que con la tabla de clientes, reutilizar la información del producto en otros pedidos, lo que reduce el espacio de almacenamiento y mejora la eficiencia de la base de datos. Además, este enfoque permite que en un futuro se puedan hacer herramientas de análisis de datos, ya que se puede relacionar el pedido con el producto del canal de venta y obtener información sobre las ventas de cada producto. El único campo que almacena información del producto es el precio de compra, ya que es importante conocer el precio al que se adquirió el producto en el momento de la compra al ser un dato esencial muy cambiante.
+Por otro lado, la tabla de artículos no almacena la información del producto, sino que relaciona el pedido con el producto del canal de venta. Esta práctica permite, al igual que con la tabla de clientes, reutilizar la información del producto en otros pedidos, lo que reduce el espacio de almacenamiento y mejora la eficiencia de la base de datos. Además, este enfoque permite también que en un futuro se puedan hacer herramientas de análisis de datos, ya que se puede relacionar el pedido con el producto del canal de venta y obtener información sobre las ventas de cada producto. El único campo que almacena información del producto es el precio de compra, ya que es importante conocer el precio al que se adquirió el producto en el momento de la compra al ser un dato esencial muy cambiante.
 
-Por último, la tabla de transportista \texttt{carrier} tiene un funcionamiento similar al de la tabla de canales de venta, ya que cada transportista es tratado como una entidad independiente. Esto permite al desarrollador añadir nuevos transportistas sin necesidad de hacer grandes cambios en la aplicación, y al usuario ver los nuevos transportistas en la aplicación tal como si fueran uno ya existente, pudiendo asignarlos a los pedidos.
+Por último, la tabla de transportista tiene un funcionamiento similar al de la tabla de canales de venta, ya que cada transportista es tratado como una entidad independiente. Esto permite al desarrollador añadir nuevos transportistas sin necesidad de hacer grandes cambios en la aplicación, y al usuario ver los nuevos transportistas en la aplicación tal como si fueran uno ya existente, pudiendo asignarlos a los pedidos.
 
-De esta manera, al generarse un nuevo pedido se añadiría una nueva fila a la tabla de pedidos \texttt{order}, una nueva fila a la tabla de clientes \texttt{customer} (si el cliente no existe ya) y tantas filas a la tabla de artículos \texttt{orderitem} como tipos de productos que el cliente haya adquirido.
+De esta manera, al generarse un nuevo pedido se añadiría una nueva fila a la tabla de pedidos (\texttt{order}), una nueva fila a la tabla de clientes (\texttt{customer}), siempre y cuando sea la primera vez que compra, y tantas filas a la tabla de artículos (\texttt{orderitem}) como tipos de productos el cliente haya adquirido.
 
 \subsubsection{Bloque de productos}
 
-El bloque de productos es el conjunto de tablas y relaciones que conforman y almacenan toda la información correspondiente a los productos. Es sin duda el bloque más complejo de la aplicación, ya que cada canal de venta puede tener sus propios productos y cada producto puede tener sus propios atributos o propiedades.
+El bloque de productos es el conjunto de tablas y relaciones que conforman y almacenan toda la información correspondiente a los productos. Es sin duda el bloque más complejo de la aplicación, ya que cada canal de venta puede tener sus propios productos y cada producto puede tener sus propios atributos o propiedades. Análogamente, cada canal de venta puede tener distintos atributos para un mismo producto, además de tener la capacidad de crear variantes de un producto.
 
 Así pues, primero de todo se debe entender como se puede relacionar un producto con un canal de venta y como se pueden gestionar los distintos atributos de cada uno de ellos para que la aplicación pueda ser lo más escalable y flexible posible. Para ello, se ha optado por crear las tablas siguientes:
 
@@ -125,37 +126,84 @@ Así pues, primero de todo se debe entender como se puede relacionar un producto
           \begin{itemize}
               \item \texttt{id}: Identificador único del producto. \textit{Clave primaria (entero)}.
               \item \texttt{name}: Nombre del producto. \textit{Cadena de caracteres}.
-              \item \texttt{sku}: Código SKU del producto. \textit{Cadena de caracteres}.
+              \item \texttt{sku}: Código \gls{sku} del producto. \textit{Cadena de caracteres}.
               \item \texttt{reference}: Referencia del producto. \textit{Cadena de caracteres}.
               \item \texttt{price}: Precio del producto. \textit{Decimal}.
               \item \texttt{stock}: Cantidad de stock del producto. \textit{Entero}.
               \item \texttt{parent\_id}: Identificador del producto padre, en caso de que el producto sea una variante de otro producto. Si el producto es padre o no tiene hijos, el campo está vacío. \textit{Entero y relación N:1 con la misma tabla} \texttt{product}.
               \item \texttt{image}: URL de la imagen del producto. \textit{Cadena de caracteres}.
           \end{itemize}
+    \item \textbf{Tipo de atributo de producto [\texttt{productattributetype}]:} Esta tabla almacena los distintos tipos de atributos que se pueden asignar a los productos. Los campos que contiene son los siguientes:
+          \begin{itemize}
+              \item \texttt{id}: Identificador único del tipo de atributo. \textit{Clave primaria (entero)}.
+              \item \texttt{name}: Nombre del tipo de atributo. Por ejemplo, ``Color'', ``Talla'', ``Peso'', etc. \textit{Cadena de caracteres}.
+              \item \texttt{data\_type}: Tipo de dato del atributo. Por ejemplo, \textit{Entero}, \textit{Cadena de caracteres}, \textit{Fecha}, etc. \textit{Entero}.
+          \end{itemize}
+    \item \textbf{Valor de atributo de producto [\texttt{productattribute}]:} Esta tabla almacena los valores de los atributos de cada producto. Los campos que contiene son los siguientes:
+          \begin{itemize}
+              \item \texttt{id}: Identificador único del valor de atributo. \textit{Clave primaria (entero)}.
+              \item \texttt{product\_id}: Identificador del producto al que pertenece el valor de atributo. \textit{Entero y relación N:1 con la tabla} \texttt{product}.
+              \item \texttt{product\_attributetype\_id}: Identificador del tipo de atributo al que pertenece el valor de atributo. \textit{Entero y relación N:1 con la tabla} \texttt{productattributetype}.
+              \item \texttt{data\_int}: Valor del atributo si es un número entero. \textit{Entero}.
+              \item \texttt{data\_decimal}: Valor del atributo si es un número decimal. \textit{Decimal}.
+              \item \texttt{data\_string}: Valor del atributo si es una cadena de caracteres. \textit{Cadena de caracteres}.
+              \item \texttt{data\_text}: Valor del atributo si es un texto. \textit{Texto}.
+              \item \texttt{data\_date}: Valor del atributo si es una fecha. \textit{Fecha}.
+              \item \texttt{data\_datetime}: Valor del atributo si es una fecha y hora. \textit{Fecha y hora}.
+              \item \texttt{data\_boolean}: Valor del atributo si es un booleano. \textit{Booleano}.
+              \item \texttt{data\_type}: Tipo de dato del atributo. Por ejemplo, \textit{Entero}, \textit{Cadena de caracteres}, \textit{Fecha}, etc
+          \end{itemize}
+    \item \textbf{Producto del canal de venta [\texttt{marketplaceproduct}]:} Esta tabla almacena la información de los productos del canal de venta. Los campos que contiene son los siguientes:
+          \begin{itemize}
+              \item \texttt{id}: Identificador único del producto del canal de venta. \textit{Clave primaria (entero)}.
+              \item \texttt{product\_id}: Identificador del producto al que pertenece el producto del canal de venta. \textit{Entero y relación N:1 con la tabla} \texttt{product}.
+              \item \texttt{marketplace\_id}: Identificador del canal de venta al que pertenece el producto del canal de venta. \textit{Entero y relación N:1 con la tabla} \texttt{marketplace}.
+              \item \texttt{enabled}: Indica si el producto del canal de venta está habilitado para ser vendido en el canal de venta. \textit{Booleano}.
+          \end{itemize}
+    \item \textbf{Tipo de atributo de producto del canal de venta \newline      [\texttt{marketplaceproductattributetype}]:} Esta tabla almacena los distintos tipos de atributos que se pueden asignar a los productos del canal de venta. Los campos que contiene son los siguientes:
+          \begin{itemize}
+              \item \texttt{id}: Identificador único del tipo de atributo del canal de venta. \textit{Clave primaria (entero)}.
+              \item \texttt{name}: Nombre del tipo de atributo del canal de venta. Por ejemplo, ``Color'', ``Talla'', ``Peso'', etc. \textit{Cadena de caracteres}.
+              \item \texttt{data\_type}: Tipo de dato del atributo del canal de venta. Por ejemplo, \textit{Entero}, \textit{Cadena de caracteres}, \textit{Fecha}, etc. \textit{Entero}.
+          \end{itemize}
+    \item \textbf{Valor de atributo de producto del canal de venta \newline [\texttt{marketplaceproductattribute}]:} Esta tabla almacena los valores de los atributos de cada producto del canal de venta. Los campos que contiene son los siguientes:
+          \begin{itemize}
+              \item \texttt{id}: Identificador único del valor de atributo del canal de venta. \textit{Clave primaria (entero)}.
+              \item \texttt{marketplaceproduct\_id}: Identificador del producto del canal de venta al que pertenece el valor de atributo. \textit{Entero y relación N:1 con la tabla} \texttt{marketplaceproduct}.
+              \item \texttt{marketplaceproduct\_attributetype\_id}: Identificador del tipo de atributo del canal de venta al que pertenece el valor de atributo. \textit{Entero y relación N:1 con la tabla} \texttt{marketplaceproductattributetype}.
+              \item \texttt{data\_int}: Valor del atributo si es un número entero. \textit{Entero}.
+              \item \texttt{data\_decimal}: Valor del atributo si es un número decimal. \textit{Decimal}.
+              \item \texttt{data\_string}: Valor del atributo si es una cadena de caracteres. \textit{Cadena de caracteres}.
+              \item \texttt{data\_text}: Valor del atributo si es un texto. \textit{Texto}.
+              \item \texttt{data\_date}: Valor del atributo si es una fecha. \textit{Fecha}.
+              \item \texttt{data\_datetime}: Valor del atributo si es una fecha y hora. \textit{Fecha y hora}.
+              \item \texttt{data\_boolean}: Valor del atributo si es un booleano. \textit{Booleano}.
+              \item \texttt{data\_type}: Tipo de dato del atributo del canal de venta. Por ejemplo, \textit{Entero}, \textit{Cadena de caracteres}, \textit{Fecha}, etc
+          \end{itemize}
 \end{itemize}
 
-Como se puede observar, el bloque de productos se puede dividir en dos capas: una primera capa (capa  \texttt{product}) que almacena la información del producto, sin entrar a una vinculación con ningún canal de venta, y una segunda capa (capa  \texttt{marketplaceproduct}) que relaciona el producto con el canal de venta. Ambas capas son bastante similares, ya que tienen una tabla principal que almacena el producto en sí, una tabla complementaria que almacena los tipos de atributos que se pueden asignar a los productos y otra tabla adicional que almacena los valores de los atributos de cada producto. \textcolor{red}{De esta manera, a partir de ahora, los productos vinculados a un canal de venta van a ser llamados \textit{marketplace products} y los productos sin vinculación a ningún canal de venta van a ser llamados \textit{products}.}
+Como se puede observar, el bloque de productos se puede dividir en dos capas: una primera capa (capa  \texttt{product}) que almacena la información del producto, sin entrar a una vinculación con ningún canal de venta, y una segunda capa (capa  \texttt{marketplaceproduct}) que relaciona el producto con el canal de venta. Ambas capas son bastante similares, ya que tienen una tabla principal que almacena el producto en sí, una tabla complementaria que almacena los tipos de atributos que se pueden asignar a los productos y otra tabla adicional que almacena los valores de los atributos de cada producto.
 
-Un producto \texttt{product} puede tener distintos tipos de atributos, como el color, la talla, el peso, etc. Por este motivo, se ha optado por crear una tabla de tipos de atributos \texttt{productattributetype} que almacena los distintos tipos de atributos que se pueden asignar a los productos. Con esto, el desarrollador puede añadir nuevos tipos de atributos sin necesidad de hacer cambios en la lógica de la aplicación. No obstante, una vez se ha definido el tipo de atributo, se debe asignar un valor a este tipo de atributo para cada producto. Por este motivo, se ha creado una tabla de valores de atributos \texttt{productattribute} que almacena los valores de los atributos de cada producto. Así pues, para cada capa habrá un total de tres tablas: una para los productos, otra para los tipos de atributos y una última para los valores de los atributos.
+Empezando por la capa \textit{product}, un producto puede tener distintos tipos de atributos, como el color, la talla, el peso, etc. Por este motivo, se ha optado por crear una tabla de tipos de atributos (\texttt{productattributetype}) que almacena los distintos tipos de atributos que se pueden asignar a los productos. Con esto, el desarrollador puede añadir nuevos tipos de atributos sin necesidad de hacer cambios en la lógica de la aplicación. No obstante, una vez se ha definido el tipo de atributo, se debe asignar un valor a este tipo de atributo para cada producto. Por este motivo, se ha creado una tabla de valores de atributos (\texttt{productattribute}) que almacena los valores de los atributos de cada producto. Así pues, para cada capa habrá un total de tres tablas: una para los productos, otra para los tipos de atributos y una última para los valores de los atributos.
 
-Para vincular el producto con el canal de venta, se ha creado una tabla de los productos del canal de venta \texttt{marketplaceproduct}. Esta tabla tiene una relación N:1 con la tabla de productos \texttt{product}, lo que significa que un producto puede estar vinculado a varios productos de canales de venta, pero un producto de canal de venta solo puede tener un único producto. De esta manera, se permite que un producto pueda ser vendido en varios canales de venta sin necesidad de duplicar la información del producto. Adicionalmente y de manera análoga a la primera capa, como cada canal de venta puede tener sus propios atributos, se ha creado una tabla de tipos de atributos del canal de venta \texttt{marketplaceproductattributetype} que almacena los distintos tipos de atributos que se pueden asignar a los productos del canal de venta. Consecuentemente, también se ha creado una tabla de valores de atributos del canal de venta \texttt{marketplaceproductattribute} que almacena los valores de los atributos de cada producto del canal de venta.
+Por lo que hace la capa \textit{marketplaceproduct}, para vincular el producto con el canal de venta, se ha creado una tabla de los productos del canal de venta (\texttt{marketplaceproduct}). Esta tabla tiene una relación N:1 con la tabla de productos (\texttt{product}), lo que significa que un producto puede estar vinculado a varios productos de canales de venta, pero un producto de canal de venta solo puede estar asociado a un único producto. De esta manera, se permite que un producto pueda ser vendido en varios canales de venta sin necesidad de duplicar la información del producto. Adicionalmente y de manera análoga a la primera capa, como cada canal de venta puede tener sus propios atributos, se ha creado una tabla de tipos de atributos del canal de venta (\texttt{marketplaceproductattributetype}) que almacena los distintos tipos de atributos que se pueden asignar a los productos del canal de venta. Consecuentemente, también se ha creado una tabla de valores de atributos del canal de venta (\texttt{marketplaceproductattribute}) que almacena los valores de los atributos de cada producto del canal de venta.
 
-De esta manera, tanto los atributos de los productos como los atributos de los productos del canal de venta forman con sus respectivas tablas de productos una relación N:M, lo que significa que un producto puede tener varios atributos y un atributo puede pertenecer a varios productos, sin la posibilidad de dos tipos de atributos iguales puedan existir en un mismo producto.
+De esta manera, tanto los atributos de los productos como los atributos de los productos del canal de venta forman con sus respectivas tablas de productos una relación N:M, lo que significa que un producto puede tener varios atributos y un atributo puede pertenecer a varios productos, sin la posibilidad de que dos tipos de atributos iguales puedan existir en un mismo producto.
 
-Adicionalmente, cabe remarcar el motivo por el que se separan los atributos de los productos y los atributos de los productos del canal de venta. Cada canal de venta define sus propios atributos para los productos, por lo que es necesario diferenciarlos. Por ejemplo, un canal de venta puede tener un atributo de color y otro de talla, mientras que otro canal de venta puede tener un atributo de peso y otro de dimensiones. Además, cada canal de venta puede tener sus propios valores para los mismos atributos, como por ejemplo el color rojo o el color azul. Por este motivo, se ha optado por crear dos capas diferenciadas para los productos y los productos del canal de venta.
+Adicionalmente, cabe remarcar el motivo por el que se separan los atributos de los productos y los atributos de los productos del canal de venta. Cada canal de venta define sus propios atributos para los productos, por lo que es necesario diferenciarlos. Por ejemplo, un canal de venta puede tener un atributo de color y otro de talla, mientras que otro canal de venta puede tener un atributo de color y otro de dimensiones, pero no de talla.
 
-Con esta estructura discutida, en el esquema \ref{fig:products_db_diagram} se puede observar un caso de uso para lograr un mayor en entendimiento de como funcionaría el flujo de creación de un producto y su vinculación con un canal de venta. En concreto, el esquema muestra como se crea un producto y se vincula a un canal de venta, añadiendo los distintos tipos de atributos.
+Con esta estructura discutida, en el esquema \ref{fig:products_db_diagram} se puede observar un caso de uso para lograr un mayor en entendimiento de como funcionaría el flujo de creación de un producto y su vinculación con un canal de venta. En concreto, el esquema muestra como se crea el producto ``Pantalones'', se le añade un valor de atributo ``M'' al tipo de atributo ``Talla'', se vincula el producto al canal de venta ``Amazon'' y finalmente se le añade el valor de atributo de producto de canal de venta ``48'' al tipo de atributo de producto de canal de venta ``Talla''.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/design_develop/products_db_diagram.pdf}
+    \includegraphics[width=0.9\textwidth]{figures/design_develop/products_db_diagram.pdf}
     \caption{Esquema de flujo de creación de un producto y su vinculación con un canal de venta.}
     \label{fig:products_db_diagram}
 \end{figure}
 
-Por último, en las tablas de atributos, tanto de productos como de productos del canal de venta, se ha decidido hacer una columna para cada tipo de valor, es decir, una columna por si el valor es un número, una cadena de caracteres, una fecha, etc. Dichas columnas van acompañadas otra columna, llamada \texttt{data\_type} que indica el tipo de valor, de manera que se puede saber que columna contiene el valor del atributo. El tipo de atributo también tiene una columna \texttt{data\_type}, de manera que deben ser ambos coincidentes. Así pues, a modo de ejemplo, si el tipo de atributo es "Talla", el \texttt{data\_type} será "Integer" y su entrada tendrá todas las columnas vacías exceptuando la columna \texttt{data\_int}.
+En las tablas de atributos, tanto de productos como de productos del canal de venta, se ha decidido hacer una columna para cada tipo de valor, es decir, una columna por si el valor es un número, una cadena de caracteres, una fecha, etc. Dichas columnas van acompañadas de otra columna, llamada \texttt{data\_type} que indica el tipo de valor, de manera que se puede saber que columna contiene el valor del atributo. El tipo de atributo también tiene una columna \texttt{data\_type}, de manera que deben ser ambos coincidentes. Así pues, a modo de ejemplo, si el tipo de atributo es "Talla", el \texttt{data\_type} será ``Integer'' y su entrada tendrá todas las columnas vacías exceptuando la columna \texttt{data\_int}.
 
-\textcolor{red}{\textbf{Falta hacer una revisión más exhaustiva}}
+Por último, remarcar la capacidad de poder crear variantes de un producto. Para ello, se ha añadido el campo \texttt{parent\_id} en la tabla de productos (\texttt{product}), que permite relacionar un producto con su producto padre. De esta manera, si el producto es una variante de un producto padre, el campo \texttt{parent\_id} contendrá el identificador del producto padre. Si el producto no es una variante o es el padre, el campo estará vacío. Esto permite que un producto pueda tener varias variantes, cada una con sus propios atributos y valores, sin necesidad de duplicar la información del producto padre.
 
 % \subsubsection{Bloque de usuarios y autenticación}
 % \label{subsubsec:usuarios_autenticacion}
@@ -223,7 +271,7 @@ Por último, en las tablas de atributos, tanto de productos como de productos de
 %     \item \textbf{Sesión [\texttt{django\_session}]:} Esta tabla almacena las sesiones de los usuarios. Los campos que contiene son los siguientes:
 %           \begin{itemize}
 %               \item \texttt{session\_key}: Clave única de la sesión. Este campo es único y se utiliza para identificar la sesión en la aplicación. \textit{Cadena de caracteres}.
-%               \item \texttt{session\_data}: Datos de la sesión. Este campo almacena los datos de la sesión en formato JSON. \textit{Cadena de caracteres}.
+%               \item \texttt{session\_data}: Datos de la sesión. Este campo almacena los datos de la sesión en formato \gls{json}. \textit{Cadena de caracteres}.
 %               \item \texttt{expire\_date}: Fecha de expiración de la sesión. Este campo indica cuándo caduca la sesión y se elimina automáticamente. \textit{Fecha y hora}.
 %           \end{itemize}
 % \end{itemize}
@@ -247,7 +295,9 @@ Por último, en las tablas de atributos, tanto de productos como de productos de
 %     \texttt{<algoritmo>\$<número de iteraciones>\$<salto>\$<hash>}
 % \end{center}
 
+\subsubsection{Diagrama de la base de datos}
 
+El diagrama de la base de datos es una representación visual de las tablas y relaciones que la conforman. En la figura \ref{fig:diagrama_base_datos} se puede observar el diagrama de la base de datos de la aplicación. Adicionalmente también se puede observar el tipo de dato de cada campo, así como las claves primarias y si permiten valores nulos o no, indicado con las siglas ``NN (\textit{Not Null})''.
 
 \begin{figure} [H]
     \centering
